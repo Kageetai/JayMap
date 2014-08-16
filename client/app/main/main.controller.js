@@ -2,21 +2,21 @@
 
 angular.module('jayMapApp')
   .controller('MainCtrl', function ($scope, $http) {
-    $scope.awesomeThings = [];
+    $scope.shops = [];
 
-    $http.get('/api/things').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
+    $http.get('/api/shops').success(function(shops) {
+      $scope.shops = shops;
     });
 
-    $scope.addThing = function() {
-      if($scope.newThing === '') {
+    $scope.addShop = function() {
+      if($scope.newShop === '') {
         return;
       }
-      $http.post('/api/things', { name: $scope.newThing });
-      $scope.newThing = '';
+      $http.post('/api/shops', { name: $scope.newShop });
+      $scope.newShop = '';
     };
 
-    $scope.deleteThing = function(thing) {
-      $http.delete('/api/things/' + thing._id);
+    $scope.deleteShop = function(shop) {
+      $http.delete('/api/shops/' + shop._id);
     };
   });
