@@ -15,7 +15,8 @@ module.exports = function (grunt) {
     ngtemplates: 'grunt-angular-templates',
     cdnify: 'grunt-google-cdn',
     protractor: 'grunt-protractor-runner',
-    injector: 'grunt-asset-injector'
+    injector: 'grunt-asset-injector',
+    shell: 'grunt-shell-spawn'
   });
 
   // Time how long tasks take. Can help when optimizing build times
@@ -370,10 +371,10 @@ module.exports = function (grunt) {
     // Run some tasks in parallel to speed up the build process
     concurrent: {
       server: [
-        'less',
+        'less'
       ],
       test: [
-        'less',
+        'less'
       ],
       debug: {
         tasks: [
@@ -442,7 +443,7 @@ module.exports = function (grunt) {
         files: {
           '.tmp/app/app.css' : '<%= yeoman.client %>/app/app.less'
         }
-      },
+      }
     },
 
     injector: {
@@ -507,6 +508,14 @@ module.exports = function (grunt) {
         }
       }
     },
+    shell: {
+      mongo: {
+        command: 'mongod --dbpath d:/\mongodbdata',
+        options: {
+          async: true
+        }
+      }
+    }
   });
 
   // Used for delaying livereload until after server has restarted
@@ -527,7 +536,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('serve', function (target) {
     if (target === 'dist') {
-      return grunt.task.run(['build', 'env:all', 'env:prod', 'express:prod', 'wait', 'open', 'express-keepalive']);
+      return grunt.task.run(['build', 'env:all', 'env:prod', 'shell:mongo', 'express:prod', 'wait', 'open', 'express-keepalive']);
     }
 
     if (target === 'debug') {
@@ -538,6 +547,7 @@ module.exports = function (grunt) {
         'concurrent:server',
         'injector',
         'bowerInstall',
+        'shell:mongo',
         'autoprefixer',
         'concurrent:debug'
       ]);
@@ -551,6 +561,7 @@ module.exports = function (grunt) {
       'injector',
       'bowerInstall',
       'autoprefixer',
+      'shell:mongo',
       'express:dev',
       'wait',
       'open',
@@ -594,6 +605,7 @@ module.exports = function (grunt) {
         'injector',
         'bowerInstall',
         'autoprefixer',
+        'shell:mongo',
         'express:dev',
         'protractor'
       ]);
