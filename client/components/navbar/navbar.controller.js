@@ -5,6 +5,9 @@ angular.module('jayMapApp')
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
+    }, {
+      'title': 'New Shop',
+      'link': '/shop/new'
     }];
 
     $scope.isCollapsed = true;
