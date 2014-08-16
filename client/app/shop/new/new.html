@@ -1,3 +1,59 @@
-<div class="col-md-12">
-This is the new view.
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Add new shop:</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="alert alert-success" role="alert" ng-show="submittedSuccess"><strong>Success!</strong> The now shop was added to our database. Thank you!</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <form class="form" name="form" ng-submit="addShop()" novalidate>
+
+        <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
+                                            'has-error': form.name.$invalid && submitted }">
+          <label>Name</label>
+
+          <input type="text" name="name" class="form-control" ng-model="newShop.name"
+                 required/>
+          <p class="help-block" ng-show="form.name.$error.required && submitted">
+            A name is required
+          </p>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-success': form.address.$valid && submitted,
+                                            'has-error': form.address.$invalid && submitted }">
+          <label>Address</label>
+
+          <input type="address" name="address" class="form-control" ng-model="newShop.address"
+                 required
+                 mongoose-error/>
+          <p class="help-block" ng-show="form.address.$error.address && submitted">
+            Doesn't look like a valid address.
+          </p>
+          <p class="help-block" ng-show="form.address.$error.required && submitted">
+            What's the address?
+          </p>
+          <p class="help-block" ng-show="form.address.$error.mongoose">
+            {{ errors.address }}
+          </p>
+        </div>
+
+        <div>
+          <button class="btn btn-primary btn-lg" type="submit">
+            Submit
+          </button>
+        </div>
+
+      </form>
+    </div>
+    <div class="col-md-6">
+      Right
+    </div>
+  </div>
 </div>
