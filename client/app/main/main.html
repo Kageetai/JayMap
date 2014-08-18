@@ -21,7 +21,7 @@
       <h1 class="page-header">Shops:</h1>
 
       <!--<div class="table-responsive">-->
-        <table class="table table-hover">
+        <table class="shop-table table table-hover">
           <thead>
             <tr>
               <th>Name</th>
@@ -30,7 +30,7 @@
             </tr>
           </thead>
           <thead>
-            <tr ng-repeat="shop in shops">
+            <tr ng-repeat="shop in shops" ng-class="{selected: shop == selShop}">
               <td><a href="#">{{shop.name}}</a></td>
               <td>{{shop.address}}</td>
               <td>{{shop.stock}}</td>

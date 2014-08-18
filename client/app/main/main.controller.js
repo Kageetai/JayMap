@@ -18,6 +18,16 @@ angular.module('jayMapApp')
 
     $http.get('/api/shops').success(function(shops) {
       $scope.shops = shops;
+
+      _.each($scope.shops, function (shop) {
+        shop.closeClick = function () {
+          shop.showWindow = false;
+          $scope.$apply();
+        };
+        shop.onClicked = function () {
+          $scope.selShop = shop;
+        };
+      });
     });
 
     $scope.addShop = function() {
