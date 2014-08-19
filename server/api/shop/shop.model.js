@@ -11,6 +11,7 @@ var ShopSchema = new Schema({
   latitude: Number,
   longitude: Number,
   image: String,
+  link: String,
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now }
 });
