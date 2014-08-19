@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jayMapApp')
-  .controller('MainCtrl', function ($scope, $http) {
+    .controller('MainCtrl', function ($scope, $http) {
       $scope.map = {
         center: {
           latitude: 52.5167,
@@ -14,43 +14,32 @@ angular.module('jayMapApp')
         }
       };
 
-    $scope.map = {
-      center: {
-        latitude: 52.5167,
-        longitude: 13.3833
-      },
-      zoom: 10,
-      draggable: true,
-      options: {
-        scrollwheel: true
-      }
-    };
+      $scope.shops = [];
 
-    $scope.shops = [];
+      $http.get('/api/shops').success(function (shops) {
+        $scope.shops = shops;
 
-    $http.get('/api/shops').success(function (shops) {
-      $scope.shops = shops;
-
-      _.each($scope.shops, function (shop) {
-        shop.closeClick = function () {
-          shop.showWindow = false;
-          $scope.$apply();
-        };
-        shop.onClicked = function () {
-          $scope.selShop = shop;
-        };
+        _.each($scope.shops, function (shop) {
+          shop.icon = "assets/images/logo-green.png";
+          shop.closeClick = function () {
+            shop.showWindow = false;
+            $scope.$apply();
+          };
+          shop.onClicked = function () {
+            $scope.selShop = shop;
+          };
+        });
       });
+
+      $scope.addShop = function () {
+        if ($scope.newShop === '') {
+          return;
+        }
+        $http.post('/api/shops', { name: $scope.newShop });
+        $scope.newShop = '';
+      };
+
+      $scope.deleteShop = function (shop) {
+        $http.delete('/api/shops/' + shop._id);
+      };
     });
-
-    $scope.addShop = function () {
-      if ($scope.newShop === '') {
-        return;
-      }
-      $http.post('/api/shops', { name: $scope.newShop });
-      $scope.newShop = '';
-    };
-
-    $scope.deleteShop = function (shop) {
-      $http.delete('/api/shops/' + shop._id);
-    };
-  });
