@@ -10,7 +10,9 @@ angular.module('jayMapApp')
         }
         $http.post('/api/shops', {
           name: $scope.newShop.name,
-          address: $scope.newShop.address
+          address: $scope.newShop.address,
+          latitude: $scope.newShop.latitude,
+          longitude: $scope.newShop.longitude
         });
         $scope.newShop = {};
       };

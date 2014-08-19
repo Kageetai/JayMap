@@ -44,6 +44,33 @@
           </p>
         </div>
 
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group" ng-class="{ 'has-success': form.latitude.$valid && submitted,
+                                            'has-error': form.latitude.$invalid && submitted }">
+              <label>Latitude</label>
+
+              <input type="text" name="latitude" class="form-control" ng-model="newShop.latitude"
+                     required/>
+              <p class="help-block" ng-show="form.latitude.$error.required && submitted">
+                A latitude is required
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group" ng-class="{ 'has-success': form.longitude.$valid && submitted,
+                                            'has-error': form.longitude.$invalid && submitted }">
+              <label>Longitude</label>
+
+              <input type="text" name="longitude" class="form-control" ng-model="newShop.longitude"
+                     required/>
+              <p class="help-block" ng-show="form.longitude.$error.required && submitted">
+                A longitude is required
+              </p>
+            </div>
+          </div>
+        </div>
+
         <div>
           <button class="btn btn-primary btn-lg" type="submit">
             Submit
