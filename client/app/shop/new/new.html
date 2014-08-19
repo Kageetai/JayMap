@@ -8,6 +8,8 @@
   <div class="row">
     <div class="col-lg-12">
       <div class="alert alert-success" role="alert" ng-show="submittedSuccess"><strong>Success!</strong> The now shop was added to our database. Thank you!</div>
+      <div class="alert alert-danger" role="alert" ng-show="submittedNoLocation"><strong>Error!</strong> I couldn't find the address!</div>
+      <div class="alert alert-danger" role="alert" ng-show="submittedError"><strong>Error!</strong> Some strange error happened! Maybe try again for now...</div>
     </div>
   </div>
 
@@ -16,27 +18,27 @@
       <form class="form" name="form" ng-submit="addShop()" novalidate>
 
         <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
-                                            'has-error': form.name.$invalid && submitted }">
+                                            'has-error': form.name.$invalid && submitted && !submittedSuccess }">
           <label>Name</label>
 
           <input type="text" name="name" class="form-control" ng-model="newShop.name"
                  required/>
-          <p class="help-block" ng-show="form.name.$error.required && submitted">
+          <p class="help-block" ng-show="form.name.$error.required && submitted && !submittedSuccess">
             A name is required
           </p>
         </div>
 
-        <div class="form-group" ng-class="{ 'has-success': form.address.$valid && submitted,
-                                            'has-error': form.address.$invalid && submitted }">
+        <div class="form-group" ng-class="{ 'has-success': form.address.$valid && submitted && submittedSuccess && !submittedNoLocation,
+                                            'has-error': form.address.$invalid && submitted && !submittedSuccess || submittedNoLocation }">
           <label>Address</label>
 
           <input type="address" name="address" class="form-control" ng-model="newShop.address"
                  required
                  mongoose-error/>
-          <p class="help-block" ng-show="form.address.$error.address && submitted">
+          <p class="help-block" ng-show="form.address.$error.address && submitted && !submittedSuccess || submittedNoLocation">
             Doesn't look like a valid address.
           </p>
-          <p class="help-block" ng-show="form.address.$error.required && submitted">
+          <p class="help-block" ng-show="form.address.$error.required && submitted && !submittedSuccess">
             What's the address?
           </p>
           <p class="help-block" ng-show="form.address.$error.mongoose">

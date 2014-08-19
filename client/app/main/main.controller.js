@@ -14,9 +14,21 @@ angular.module('jayMapApp')
         }
       };
 
+    $scope.map = {
+      center: {
+        latitude: 52.5167,
+        longitude: 13.3833
+      },
+      zoom: 10,
+      draggable: true,
+      options: {
+        scrollwheel: true
+      }
+    };
+
     $scope.shops = [];
 
-    $http.get('/api/shops').success(function(shops) {
+    $http.get('/api/shops').success(function (shops) {
       $scope.shops = shops;
 
       _.each($scope.shops, function (shop) {
@@ -30,15 +42,15 @@ angular.module('jayMapApp')
       });
     });
 
-    $scope.addShop = function() {
-      if($scope.newShop === '') {
+    $scope.addShop = function () {
+      if ($scope.newShop === '') {
         return;
       }
       $http.post('/api/shops', { name: $scope.newShop });
       $scope.newShop = '';
     };
 
-    $scope.deleteShop = function(shop) {
+    $scope.deleteShop = function (shop) {
       $http.delete('/api/shops/' + shop._id);
     };
   });
