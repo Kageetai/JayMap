@@ -13,6 +13,7 @@ angular.module('jayMapApp')
         $http({
           method: 'get',
           url: 'http://maps.googleapis.com/maps/api/geocode/json',
+          key: 'AIzaSyB0StnBPFbNV6UE5c1fr5hYdU5ttqSSZZg',
           params: { address: $scope.newShop.address.replace(' ', '+') }
         }).success(function (data, status) {
           if (data.status === 'OK') {
@@ -30,6 +31,8 @@ angular.module('jayMapApp')
             });
           } else if (data.status === 'ZERO_RESULTS') {
             $scope.submittedNoLocation = true;
+          } else {
+            $scope.submittedError = true;
           }
         });
       }
