@@ -16,59 +16,32 @@
       <form class="form" name="form" ng-submit="addShop()" novalidate>
 
         <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
-                                            'has-error': form.name.$invalid && submitted }">
+                                            'has-error': form.name.$invalid && submitted && !submittedSuccess }">
           <label>Name</label>
 
           <input type="text" name="name" class="form-control" ng-model="newShop.name"
                  required/>
-          <p class="help-block" ng-show="form.name.$error.required && submitted">
+          <p class="help-block" ng-show="form.name.$error.required && submitted && !submittedSuccess">
             A name is required
           </p>
         </div>
 
-        <div class="form-group" ng-class="{ 'has-success': form.address.$valid && submitted,
-                                            'has-error': form.address.$invalid && submitted }">
+        <div class="form-group" ng-class="{ 'has-success': form.address.$valid && submitted && submittedSuccess && !submittedNoLocation,
+                                            'has-error': form.address.$invalid && submitted && !submittedSuccess || submittedNoLocation }">
           <label>Address</label>
 
           <input type="address" name="address" class="form-control" ng-model="newShop.address"
                  required
                  mongoose-error/>
-          <p class="help-block" ng-show="form.address.$error.address && submitted">
+          <p class="help-block" ng-show="form.address.$error.address && submitted && !submittedSuccess || submittedNoLocation">
             Doesn't look like a valid address.
           </p>
-          <p class="help-block" ng-show="form.address.$error.required && submitted">
+          <p class="help-block" ng-show="form.address.$error.required && submitted && !submittedSuccess">
             What's the address?
           </p>
           <p class="help-block" ng-show="form.address.$error.mongoose">
             {{ errors.address }}
           </p>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="form-group" ng-class="{ 'has-success': form.latitude.$valid && submitted,
-                                            'has-error': form.latitude.$invalid && submitted }">
-              <label>Latitude</label>
-
-              <input type="text" name="latitude" class="form-control" ng-model="newShop.latitude"
-                     required/>
-              <p class="help-block" ng-show="form.latitude.$error.required && submitted">
-                A latitude is required
-              </p>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="form-group" ng-class="{ 'has-success': form.longitude.$valid && submitted,
-                                            'has-error': form.longitude.$invalid && submitted }">
-              <label>Longitude</label>
-
-              <input type="text" name="longitude" class="form-control" ng-model="newShop.longitude"
-                     required/>
-              <p class="help-block" ng-show="form.longitude.$error.required && submitted">
-                A longitude is required
-              </p>
-            </div>
-          </div>
         </div>
 
         <div>
