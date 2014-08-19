@@ -20,7 +20,7 @@ angular.module('jayMapApp')
         $scope.shops = shops;
 
         _.each($scope.shops, function (shop) {
-          shop.icon = "assets/images/logo-green.png";
+          shop.icon = 'assets/images/logo-green.png';
           shop.closeClick = function () {
             shop.showWindow = false;
             $scope.$apply();

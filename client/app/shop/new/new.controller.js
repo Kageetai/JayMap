@@ -17,7 +17,7 @@ angular.module('jayMapApp')
       $scope.newShop = { _id: 1 };
 
       $scope.showOnMap = function () {
-        if ($scope.newShop.address.length == "") {
+        if ($scope.newShop.address.length === '') {
           return;
         }
 
