@@ -6,6 +6,7 @@ angular.module('jayMapApp')
       .state('new', {
         url: '/shop/new',
         templateUrl: 'app/shop/new/new.html',
-        controller: 'NewCtrl'
+        controller: 'NewCtrl',
+        authenticate: true
       });
   });
