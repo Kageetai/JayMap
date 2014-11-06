@@ -1,19 +1,20 @@
-<!--<header class="hero-unit" id="banner">-->
-  <!--<div class="container">-->
-    <!--<h1>Welcome!</h1>-->
+<!--<google-map-->
+    <!--center="map.center"-->
+    <!--zoom="map.zoom"-->
+    <!--draggable="true"-->
+    <!--options="map.options" >-->
+  <!--<markers models="shops" coords="'self'" icon="'icon'" idkey="'_id'" click="'onClicked'">-->
+  <!--</markers>-->
+<!--</google-map>-->
 
-    <!--<p class="lead">Look for Shops and Events!</p>-->
-  <!--</div>-->
-<!--</header>-->
-
-<google-map
-    center="map.center"
-    zoom="map.zoom"
-    draggable="true"
-    options="map.options" >
-  <markers models="shops" coords="'self'" icon="'icon'" idkey="'_id'" click="'onClicked'">
-  </markers>
-</google-map>
+<ui-gmap-google-map
+  center="map.center"
+  zoom="map.zoom"
+  draggable="true"
+  options="map.options">
+  <ui-gmap-markers models="shops" coords="'self'" icon="'icon'" idkey="'_id'" click="'onClicked'">
+  </ui-gmap-markers>
+</ui-gmap-google-map>
 
 <div class="container">
   <div class="row">

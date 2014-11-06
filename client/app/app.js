@@ -5,7 +5,7 @@ angular.module('jayMapApp', [
   'ngResource',
   'ngSanitize',
   'ui.router',
-  'google-maps'
+  'google-maps'.ns()
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
@@ -14,6 +14,14 @@ angular.module('jayMapApp', [
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
   })
+
+  .config(['GoogleMapApiProvider'.ns(), function (GoogleMapApi) {
+    GoogleMapApi.configure({
+      key: 'AIzaSyBPuXezFtTaSW78idlAzQw_11VsegsO5LM',
+      v: '3.17',
+      libraries: 'weather,geometry,visualization'
+    });
+  }])
 
   .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
     return {
