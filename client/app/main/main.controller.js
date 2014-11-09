@@ -7,7 +7,7 @@ angular.module('jayMapApp')
           latitude: 52.5167,
           longitude: 13.3833
         },
-        zoom: 10,
+        zoom: 11,
         draggable: true,
         options: {
           scrollwheel: true

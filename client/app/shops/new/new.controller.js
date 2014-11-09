@@ -7,7 +7,7 @@ angular.module('jayMapApp')
         latitude: 52.5167,
         longitude: 13.3833
       },
-      zoom: 10,
+      zoom: 11,
       draggable: true,
       options: {
         scrollwheel: true
@@ -27,6 +27,9 @@ angular.module('jayMapApp')
           if (data.status === 'OK') {
             $scope.newShop.latitude = data.results[0].geometry.location.lat;
             $scope.newShop.longitude = data.results[0].geometry.location.lng;
+            $scope.map.center.latitude = data.results[0].geometry.location.lat;
+            $scope.map.center.longitude = data.results[0].geometry.location.lng;
+            $scope.map.zoom = 15;
           } else if (data.status === 'ZERO_RESULTS') {
             $scope.submittedNoLocation = true;
           } else {
