@@ -27,6 +27,7 @@
     "filterDirectory": "client/app/",
     "serviceDirectory": "client/app/",
     "basePath": "client",
+    "moduleName": "",
     "filters": [
       "uirouter"
     ],
@@ -34,6 +35,15 @@
       "js",
       "html",
       "less"
-    ]
+    ],
+    "directiveSimpleTemplates": "",
+    "directiveComplexTemplates": "",
+    "filterTemplates": "",
+    "serviceTemplates": "",
+    "factoryTemplates": "",
+    "controllerTemplates": "",
+    "decoratorTemplates": "",
+    "providerTemplates": "",
+    "routeTemplates": ""
   }
 }
