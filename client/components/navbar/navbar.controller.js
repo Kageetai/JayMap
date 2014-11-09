@@ -6,8 +6,11 @@ angular.module('jayMapApp')
       'title': 'Home',
       'link': '/'
     }, {
+      'title': 'All Shops',
+      'link': '/shops'
+    }, {
       'title': 'New Shop',
-      'link': '/shop/new'
+      'link': '/shops/new'
     }];
 
     $scope.isCollapsed = true;

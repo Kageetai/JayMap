@@ -4,8 +4,8 @@ angular.module('jayMapApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('new', {
-        url: '/shop/new',
-        templateUrl: 'app/shop/new/new.html',
+        url: '/shops/new',
+        templateUrl: 'app/shops/new/new.html',
         controller: 'NewCtrl'//,
         //authenticate: true
       });
