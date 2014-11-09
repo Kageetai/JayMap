@@ -8,7 +8,7 @@ angular.module('jayMapApp')
     $scope.register = function(form) {
       $scope.submitted = true;
 
-      if(form.$valid && $scope.user.password == $scope.user.password2) {
+      if(form.$valid && $scope.user.password === $scope.user.password2) {
         Auth.createUser({
           name: $scope.user.name,
           email: $scope.user.email,
