@@ -9,15 +9,15 @@
         <tr>
           <th>Name</th>
           <th>Address</th>
-          <th>Stock</th>
+          <th>In Stock?</th>
           <th>&nbsp;</th>
         </tr>
         </thead>
         <thead>
         <tr ng-repeat="shop in shops" ng-class="{selected: shop == selShop}">
-          <td><a href="#">{{shop.name}}</a></td>
+          <td><a ng-href="{{shop.link}}">{{shop.name}}</a></td>
           <td>{{shop.address}}</td>
-          <td>{{shop.stock}}</td>
+          <td>{{shop.stock ? "yes" : "no"}}</td>
           <td><a ng-if="isAdmin()" ng-click="deleteShop(shop)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a></td>
         </tr>
         </thead>
