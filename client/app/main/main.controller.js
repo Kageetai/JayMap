@@ -11,12 +11,11 @@ angular.module('jayMapApp')
       fit: true,
       doCluster: true,
       clusterOptions: {
-        title: 'Hi I am a Cluster!',
         gridSize: 60,
         ignoreHidden: true,
         minimumClusterSize: 2,
         imageExtension: 'png',
-        imagePath: 'assets/images/logo-green',
+        imagePath: 'assets/images/norev/cluster',
         imageSizes: [32],
         textColor: 'white'
       },
@@ -32,7 +31,7 @@ angular.module('jayMapApp')
       $scope.shops = shops;
 
       _.each($scope.shops, function (shop) {
-        shop.icon = 'assets/images/logo-green.png';
+        shop.icon = 'assets/images/norev/logo-green.png';
         shop.closeClick = function () {
           shop.showWindow = false;
           $scope.$apply();
