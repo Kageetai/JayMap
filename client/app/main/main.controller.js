@@ -18,7 +18,7 @@ angular.module('jayMapApp')
         imageExtension: 'png',
         imagePath: 'assets/images/logo-green',
         imageSizes: [32],
-        textColor: "white"
+        textColor: 'white'
       },
       draggable: true,
       options: {
