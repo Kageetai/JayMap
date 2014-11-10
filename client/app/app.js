@@ -23,6 +23,13 @@ angular.module('jayMapApp', [
     });
   }])
 
+  .directive('navbarCollapse', function () {
+    return function postLink(scope, element) {
+      var nav = element.find('.navbar-collapse');
+      element.find('button.navbar-toggle').click(function() { nav.collapse('toggle'); });
+    };
+  })
+
   .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
     return {
       // Add authorization token to headers
