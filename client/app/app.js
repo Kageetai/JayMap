@@ -19,7 +19,7 @@ angular.module('jayMapApp', [
     GoogleMapApi.configure({
       key: 'AIzaSyBPuXezFtTaSW78idlAzQw_11VsegsO5LM',
       v: '3.17',
-      libraries: 'weather,geometry,visualization'
+      libraries: 'places'
     });
   }])
 
