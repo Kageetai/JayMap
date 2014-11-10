@@ -12,7 +12,15 @@
   zoom="map.zoom"
   draggable="true"
   options="map.options">
-  <ui-gmap-markers models="shops" coords="'self'" icon="'icon'" idkey="'_id'" click="'onClicked'">
+  <ui-gmap-markers
+    models="shops"
+    coords="'self'"
+    icon="'icon'"
+    idkey="'_id'"
+    fit="map.fit"
+    doCluster="map.doCluster"
+    clusterOptions="map.clusterOptions"
+    click="'onClicked'">
   </ui-gmap-markers>
 </ui-gmap-google-map>
 
