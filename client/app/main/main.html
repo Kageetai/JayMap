@@ -20,7 +20,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="selShop">
-          <a href="{{selShop.image}}"><img class="selShop-img" ng-src="{{selShop.image}}" alt="{{selShop.name}}"/></a>
+          <a ng-show="selShop.image" ng-href="{{selShop.image}}"><img class="selShop-img" ng-src="{{selShop.image}}" alt="{{selShop.name}}"/></a>
           <a class="selShop-title" ng-href="{{selShop.link}}"><h2>{{selShop.name}}</h2></a>
 
           <p class="selShop-address">{{selShop.address}}</p>
