@@ -38,7 +38,7 @@ Shop.find({}).remove(function () {
       stock: 100,
       latitude: 52.5250862,
       longitude: 13.38128329999995,
-      image: "assets/images/yeoman.png",
+      image: "http://addyosmani.com/blog/wp-content/uploads/2012/06/yeoman_.jpg",
       link: "http://www.google.de/",
       createdAt: "2013-11-04T08:55:04.063Z",
       updatedAt: "2013-11-04T08:55:04.715Z"
@@ -48,7 +48,7 @@ Shop.find({}).remove(function () {
       "address": "Lindowertsr. 12 13347 Berlin",
       "description": "im alten und im neuen KIKI SOL",
       "stock": 0,
-      "image": "assets/images/yeoman.png",
+      "image": "",
       "link": "http://www.google.de/",
       "latitude": 52.54416209999999,
       "longitude": 13.36886949999996
