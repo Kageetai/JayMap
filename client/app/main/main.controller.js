@@ -8,6 +8,7 @@ angular.module('jayMapApp')
         longitude: 13.3833
       },
       zoom: 11,
+      pan: true,
       fit: true,
       doCluster: true,
       clusterOptions: {
@@ -21,7 +22,8 @@ angular.module('jayMapApp')
       },
       draggable: true,
       options: {
-        scrollwheel: true
+        scrollwheel: true,
+        disableDefaultUI: true
       }
     };
 
@@ -32,10 +34,6 @@ angular.module('jayMapApp')
 
       _.each($scope.shops, function (shop) {
         shop.icon = 'assets/images/norev/logo-green.png';
-        shop.closeClick = function () {
-          shop.showWindow = false;
-          $scope.$apply();
-        };
         shop.onClicked = function () {
           $scope.selShop = shop;
         };
