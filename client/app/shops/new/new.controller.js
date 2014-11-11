@@ -8,9 +8,11 @@ angular.module('jayMapApp')
         longitude: 13.3833
       },
       zoom: 11,
-      draggable: true,
+      pan: false,
       options: {
-        scrollwheel: true
+        scrollwheel: false,
+        draggable: false,
+        disableDefaultUI: true
       }
     };
 

@@ -3,9 +3,6 @@
 angular.module('jayMapApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
     $scope.menu = [{
-      'title': 'Home',
-      'link': '/'
-    }, {
       'title': 'All Shops',
       'link': '/shops'
     }, {
