@@ -13,7 +13,7 @@ angular.module('jayMapApp')
         method: '&onSave',
         textarea: '@useTextarea'
       },
-      controller: function($scope, $attrs) {
+      controller: function($scope) {
         $scope.view = {
           editableValue: $scope.value,
           editorEnabled: false

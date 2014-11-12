@@ -12,7 +12,7 @@ angular.module('jayMapApp')
       fit: true,
       doCluster: true,
       clusterOptions: {
-        gridSize: 60,
+        gridSize: 40,
         ignoreHidden: true,
         minimumClusterSize: 2,
         imageExtension: 'png',

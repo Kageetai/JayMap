@@ -16,7 +16,6 @@ Shop.find({}).remove(function () {
       latitude: 52.49861,
       longitude: 13.446149999999989,
       image: "assets/images/yeoman.png",
-      link: "http://www.google.de/",
       createdAt: "2013-10-22T09:34:23.519Z",
       updatedAt: "2013-10-31T13:24:23.236Z"
     },

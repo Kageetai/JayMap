@@ -13,9 +13,10 @@ describe('Directive: clickToEdit', function () {
   }));
 
   it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<click-to-edit></click-to-edit>');
+    element = angular.element('<div click-to-edit></div>');
     element = $compile(element)(scope);
     scope.$apply();
-    expect(element.text()).toBe('this is the clickToEdit directive');
+    //expect(element.text()).toBe('this is the clickToEdit directive');
+    expect(element.find('input').hasClass('form-control')).toBe(true);
   }));
 });
