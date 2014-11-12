@@ -9,16 +9,22 @@
             <th>Name</th>
             <th>Address</th>
             <th>In Stock?</th>
-            <th>&nbsp;</th>
+            <th>Website</th>
+            <th ng-show="isAdmin()">&nbsp;</th>
           </tr>
           </thead>
           <thead>
           <tr ng-repeat="shop in shops" ng-class="{selected: shop == selShop}">
-            <td><a ng-href="{{shop.link}}">{{shop.name}}</a></td>
+            <td><a ng-href="/shops/{{shop._id}}">{{shop.name}}</a></td>
             <td>{{shop.address}}</td>
             <td>{{shop.stock ? "yes" : "no"}}</td>
             <td>
-              <a ng-if="isAdmin()" ng-click="deleteShop(shop)" class="trash">
+              <a ng-href="{{shop.link}}" target="_blank" class="view">
+                <span class="fa fa-external-link"></span>
+              </a>
+            </td>
+            <td ng-show="isAdmin()">
+              <a ng-click="deleteShop(shop)" class="trash">
                 <span class="fa fa-trash pull-right"></span>
               </a>
             </td>

@@ -19,18 +19,24 @@
   box-shadow: 0 -1px 5px #777;
 
   .selShop-title {
-    color: #eee;
+    color: @navbar-default-link-color;
   }
 
   .selShop-img {
     .pull-right;
-    .img-thumbnail;
     margin: 0 0 15px 15px;
     max-width: 33%;
   }
 
   .selShop-address {
     font-style: italic;
+  }
+
+  .selShop-link {
+    & > a {
+      color: @navbar-default-link-color;
+      font-style: italic;
+    }
   }
 }
 

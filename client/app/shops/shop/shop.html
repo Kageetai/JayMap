@@ -1,0 +1,30 @@
+<div class="shop-container container">
+  <div class="row">
+    <div class="col-md-12">
+      <a class="shop-img thumbnail" ng-show="shop.image" ng-href="{{shop.image}}"><img
+        ng-src="{{shop.image}}" alt="{{shop.name}}"/></a>
+
+      <h1>{{shop.name}}</h1>
+
+      <p class="shop-address">{{shop.address}}</p>
+
+      <p class="shop-link">Website: <a ng-href="{{shop.link}}">{{shop.link}}</a></p>
+
+      <p>{{shop.description}}</p>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <ui-gmap-google-map
+        center="map.center"
+        zoom="map.zoom"
+        pan="map.pan"
+        options="map.options" >
+        <ui-gmap-marker coords="shop" idkey="1" icon="'assets/images/norev/logo-green.png'">
+        </ui-gmap-marker>
+      </ui-gmap-google-map>
+    </div>
+  </div>
+</div>

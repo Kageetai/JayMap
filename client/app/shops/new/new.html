@@ -50,7 +50,7 @@
                                             'has-error': form.description.$invalid && submitted && !submittedSuccess || submittedNoLocation }">
           <label>Description <small>(optional)</small></label>
 
-          <textarea type="description" name="description" class="form-control" rows="5" ng-model="newShop.description"
+          <textarea name="description" class="form-control" rows="5" ng-model="newShop.description"
           mongoose-error>
           </textarea>
           <p class="help-block" ng-show="form.description.$error.mongoose">
