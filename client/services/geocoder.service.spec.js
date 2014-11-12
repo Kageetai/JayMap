@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: Geocode', function () {
+describe('Service: Geocoder', function () {
 
   // load the service's module
   beforeEach(module('jayMapApp'));
 
   // instantiate service
-  var Geocode;
-  beforeEach(inject(function (_Geocode_) {
-    Geocode = _Geocode_;
+  var Geocoder;
+  beforeEach(inject(function (_Geocoder_) {
+    Geocoder = _Geocoder_;
   }));
 
   it('should do something', function () {
-    expect(!!Geocode).toBe(true);
+    expect(!!Geocoder).toBe(true);
   });
 
 });
