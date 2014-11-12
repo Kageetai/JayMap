@@ -3,7 +3,6 @@
     <div class="col-md-12">
       <h1 class="page-header">Shops:</h1>
 
-      <div class="table-responsive">
         <table class="shop-table table table-striped">
           <thead>
           <tr>
@@ -18,12 +17,14 @@
             <td><a ng-href="{{shop.link}}">{{shop.name}}</a></td>
             <td>{{shop.address}}</td>
             <td>{{shop.stock ? "yes" : "no"}}</td>
-            <td><a ng-if="isAdmin()" ng-click="deleteShop(shop)" class="trash"><span
-              class="fa fa-trash pull-right"></span></a></td>
+            <td>
+              <a ng-if="isAdmin()" ng-click="deleteShop(shop)" class="trash">
+                <span class="fa fa-trash pull-right"></span>
+              </a>
+            </td>
           </tr>
           </thead>
         </table>
-      </div>
     </div>
   </div>
 </div>

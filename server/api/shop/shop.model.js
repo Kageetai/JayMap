@@ -7,7 +7,7 @@ var ShopSchema = new Schema({
   name: String,
   address: String,
   description: String,
-  stock: Number,
+  stock: { type: Number, default: 100 },
   latitude: Number,
   longitude: Number,
   image: String,

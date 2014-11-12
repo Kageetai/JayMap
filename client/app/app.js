@@ -5,6 +5,7 @@ angular.module('jayMapApp', [
   'ngResource',
   'ngSanitize',
   'ui.router',
+  'ngStorage',
   'google-maps'.ns()
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
