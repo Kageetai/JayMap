@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jayMapApp')
-  .controller('MainCtrl', function ($scope, $http) {
+  .controller('MainCtrl', function ($scope, $http, Shop) {
     $scope.map = {
       center: {
         latitude: 52.5167,
@@ -27,11 +27,7 @@ angular.module('jayMapApp')
       }
     };
 
-    $scope.shops = [];
-
-    $http.get('/api/shops').success(function (shops) {
-      $scope.shops = shops;
-
+    $scope.shops = Shop.query(function () {
       _.each($scope.shops, function (shop) {
         shop.icon = 'assets/images/norev/logo-green.png';
         shop.onClicked = function () {

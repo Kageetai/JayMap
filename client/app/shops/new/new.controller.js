@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jayMapApp')
-  .controller('NewCtrl', function ($scope, $http, Geocoder) {
+  .controller('NewCtrl', function ($scope, $http, Shop, Geocoder) {
     $scope.map = {
       center: {
         latitude: 52.5167,
@@ -16,7 +16,7 @@ angular.module('jayMapApp')
       }
     };
 
-    $scope.newShop = { _id: 1 };
+    $scope.newShop = new Shop();
 
     $scope.showOnMap = function () {
       if ($scope.newShop.address.length === '') {
@@ -47,13 +47,8 @@ angular.module('jayMapApp')
       }
 
       if (form.$valid) {
-        $http.post('/api/shops', {
-          name: $scope.newShop.name,
-          address: $scope.newShop.address,
-          latitude: $scope.newShop.latitude,
-          longitude: $scope.newShop.longitude
-        }).success(function () {
-          $scope.newShop = {};
+        $scope.newShop.$save(function() {
+          $scope.newShop = new Shop();
           $scope.submittedSuccess = true;
         });
       }
