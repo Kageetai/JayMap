@@ -13,7 +13,7 @@
       <p ng-if="isAdmin()"class="shop-link">Website: <a ng-href="{{shop.link}}"><span click-to-edit="shop.link">{{shop.link}}</span></a></p>
       <p ng-if="!isAdmin()"class="shop-link">Website: <a ng-href="{{shop.link}}">{{shop.link}}</a></p>
 
-      <p ng-if="isAdmin()"><span click-to-edit="shop.description">{{shop.description}}</span></p>
+      <p ng-if="isAdmin()"><span click-to-edit="shop.description" use-textarea="true">{{shop.description || "no description"}}</span></p>
       <p ng-if="!isAdmin()">{{shop.description}}</p>
 
     </div>
