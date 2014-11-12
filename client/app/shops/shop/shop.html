@@ -4,13 +4,17 @@
       <a class="shop-img thumbnail" ng-show="shop.image" ng-href="{{shop.image}}"><img
         ng-src="{{shop.image}}" alt="{{shop.name}}"/></a>
 
-      <h1 class="page-header">{{shop.name}}</h1>
+      <h1 ng-if="isAdmin()" class="page-header"><span click-to-edit="shop.name">{{shop.name}}</span></h1>
+      <h1 ng-if="!isAdmin()" class="page-header">{{shop.name}}</h1>
 
-      <p class="shop-address">{{shop.address}}</p>
+      <p ng-if="isAdmin()" class="shop-address"><span click-to-edit="shop.address">{{shop.address}}</span></p>
+      <p ng-if="!isAdmin()" class="shop-address">{{shop.address}}</p>
 
-      <p class="shop-link">Website: <a ng-href="{{shop.link}}">{{shop.link}}</a></p>
+      <p ng-if="isAdmin()"class="shop-link">Website: <a ng-href="{{shop.link}}"><span click-to-edit="shop.link">{{shop.link}}</span></a></p>
+      <p ng-if="!isAdmin()"class="shop-link">Website: <a ng-href="{{shop.link}}">{{shop.link}}</a></p>
 
-      <p>{{shop.description}}</p>
+      <p ng-if="isAdmin()"><span click-to-edit="shop.description">{{shop.description}}</span></p>
+      <p ng-if="!isAdmin()">{{shop.description}}</p>
 
     </div>
   </div>
