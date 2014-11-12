@@ -46,6 +46,18 @@
           </p>
         </div>
 
+        <div class="form-group" ng-class="{ 'has-success': form.description.$valid && submitted && submittedSuccess && !submittedNoLocation,
+                                            'has-error': form.description.$invalid && submitted && !submittedSuccess || submittedNoLocation }">
+          <label>Description <small>(optional)</small></label>
+
+          <textarea type="description" name="description" class="form-control" rows="5" ng-model="newShop.description"
+          mongoose-error>
+          </textarea>
+          <p class="help-block" ng-show="form.description.$error.mongoose">
+            {{ errors.description }}
+          </p>
+        </div>
+
         <div>
           <button class="btn btn-default btn-lg" type="button" ng-click="showOnMap()">
             1. Show on map
