@@ -11,11 +11,11 @@ Heroku: http://jaymap.herokuapp.com
 ## Requirements
 
 - [Node.js](http://nodejs.org/)
-- Grunt-CLI ´npm install -g grunt-cli´
+- Grunt-CLI `npm install -g grunt-cli`
 
 ## Usage
 
-- ´git clone git@github.com:Kageetai/JayMap.git´
-- ´npm install´
-- ´bower install´
-- ´grunt´ or ´grunt serve´ or ´grunt serve:dist´
+- `git clone git@github.com:Kageetai/JayMap.git`
+- `npm install`
+- `bower install`
+- `grunt` or `grunt serve` or `grunt serve:dist`
