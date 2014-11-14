@@ -66,4 +66,9 @@ angular.module('jayMapApp', [
         }
       });
     });
+
+    $rootScope.$on('$stateChangeSuccess', function (event, next) {
+      // collapse navbar
+      angular.element('.navbar-collapse').collapse('hide');
+    });
   });
