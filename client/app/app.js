@@ -6,6 +6,8 @@ angular.module('jayMapApp', [
   'ngSanitize',
   'ui.router',
   'ngStorage',
+  'ngLocalize',
+  'ngLocalize.InstalledLanguages',
   'google-maps'.ns()
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
@@ -23,6 +25,27 @@ angular.module('jayMapApp', [
       libraries: 'weather,geometry,visualization'
     });
   }])
+
+  .value('localeConf', {
+    basePath: 'languages',
+    defaultLocale: 'de-DE',
+    sharedDictionary: 'common',
+    fileExtension: '.lang.json',
+    persistSelection: true,
+    cookieName: 'COOKIE_LOCALE_LANG',
+    observableAttrs: new RegExp('^data-(?!ng-|i18n)'),
+    delimiter: '::'
+  })
+
+  .value('localeSupported', [
+    'en-US',
+    'de-DE'
+  ])
+
+  .value('localeFallbacks', {
+    'en': 'en-US',
+    'de': 'de-DE'
+  })
 
   .directive('navbarCollapse', function () {
     return function postLink(scope, element) {
