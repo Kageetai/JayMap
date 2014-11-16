@@ -1,33 +1,7 @@
 'use strict';
 
 angular.module('jayMapApp')
-  .controller('NavbarCtrl', function ($scope, $location, locale, localeSupported, localeEvents, Auth) {
-    $scope.supportedLang = localeSupported;
-    $scope.localeData = {
-      'en-US': {
-        flagClass: 'flag-us',
-        langDisplayText: 'English'
-      },
-      'de-DE': {
-        flagClass: 'flag-de',
-        langDisplayText: 'German'
-      }
-    };
-
-    $scope.setLocale = function (loc) {
-      locale.setLocale(loc);
-    };
-
-    locale.ready('common').then(function () {
-      $scope.flagClass = $scope.localeData[locale.getLocale()].flagClass;
-      $scope.langDisplayText = $scope.localeData[locale.getLocale()].langDisplayText;
-    });
-
-    $scope.$on(localeEvents.localeChanges, function (event, data) {
-      $scope.flagClass = $scope.localeData[data].flagClass;
-      $scope.langDisplayText = $scope.localeData[data].langDisplayText;
-    });
-
+  .controller('NavbarCtrl', function ($scope, $location, $translate, Auth) {
     $scope.menu = [{
       'title': 'All Shops',
       'link': '/shops'
@@ -35,6 +9,14 @@ angular.module('jayMapApp')
       'title': 'New Shop',
       'link': '/shops/new'
     }];
+
+    $scope.changeLanguage = function (key) {
+      $translate.use(key).then(function (key) {
+        console.log("Sprache zu " + key + " gewechselt.");
+      }, function (key) {
+        console.log("Irgendwas lief schief.");
+      });
+    };
 
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;

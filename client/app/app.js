@@ -6,8 +6,7 @@ angular.module('jayMapApp', [
   'ngSanitize',
   'ui.router',
   'ngStorage',
-  'ngLocalize',
-  'ngLocalize.InstalledLanguages',
+  'pascalprecht.translate',
   'google-maps'.ns()
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
@@ -18,6 +17,25 @@ angular.module('jayMapApp', [
     $httpProvider.interceptors.push('authInterceptor');
   })
 
+  .config(function($translateProvider) {
+    $translateProvider.translations('en', {
+      SIGNUP: 'Sign up',
+      LOGIN: 'Log in',
+      LANG_BUTTON: 'Language',
+      LANG_BUTTON_EN: 'English',
+      LANG_BUTTON_DE: 'German'
+    })
+    .translations('de', {
+      SIGNUP: 'Registrieren',
+      LOGIN: 'Einloggen',
+      LANG_BUTTON: 'Sprache',
+      LANG_BUTTON_EN: 'Englisch',
+      LANG_BUTTON_DE: 'Deutsch'
+    });
+    $translateProvider.preferredLanguage('de');
+    //$translateProvider.determinePreferredLanguage();
+  })
+
   .config(['GoogleMapApiProvider'.ns(), function (GoogleMapApi) {
     GoogleMapApi.configure({
       key: 'AIzaSyBPuXezFtTaSW78idlAzQw_11VsegsO5LM',
@@ -25,27 +43,6 @@ angular.module('jayMapApp', [
       libraries: 'weather,geometry,visualization'
     });
   }])
-
-  .value('localeConf', {
-    basePath: 'languages',
-    defaultLocale: 'de-DE',
-    sharedDictionary: 'common',
-    fileExtension: '.lang.json',
-    persistSelection: true,
-    cookieName: 'COOKIE_LOCALE_LANG',
-    observableAttrs: new RegExp('^data-(?!ng-|i18n)'),
-    delimiter: '::'
-  })
-
-  .value('localeSupported', [
-    'en-US',
-    'de-DE'
-  ])
-
-  .value('localeFallbacks', {
-    'en': 'en-US',
-    'de': 'de-DE'
-  })
 
   .directive('navbarCollapse', function () {
     return function postLink(scope, element) {

@@ -19,24 +19,19 @@
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-            <i ng-class="flagClass"></i>
-            <span>{{ langDisplayText }}</span>
+            <span>{{ 'LANG_BUTTON' | translate }}</span>
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
-            <li data-ng-repeat="lang in supportedLang">
-              <a href="" ng-click="setLocale(lang)">
-                <i ng-class="localeData[lang].flagClass"></i>
-                <span>{{ localeData[lang].langDisplayText }}</span>
-              </a>
-            </li>
+            <li><a href="" ng-click="changeLanguage('en')">{{ 'LANG_BUTTON_EN' | translate }}</a></li>
+            <li><a href="" ng-click="changeLanguage('de')">{{ 'LANG_BUTTON_DE' | translate }}</a></li>
           </ul>
         </li>
-        <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/signup')}"><a href="/signup" i18n="common.signup"></a></li>
-        <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/login')}"><a href="/login"  i18n="common.login"></a></li>
+        <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/signup')}"><a href="/signup">{{ 'SIGNUP' | translate }}</a></li>
+        <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/login')}"><a href="/login">Login</a></li>
         <li ng-show="isAdmin()" ng-class="{active: isActive('/admin')}"><a href="/admin">Admin</a></li>
         <li ng-show="isLoggedIn()" ng-class="{active: isActive('/settings')}"><a href="/settings"><span class="fa fa-cog"></span></a></li>
-        <li ng-show="isLoggedIn()" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()"  i18n="common.logout"></a></li>
+        <li ng-show="isLoggedIn()" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">Logout</a></li>
       </ul>
     </div>
   </div>
