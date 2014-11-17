@@ -18,19 +18,9 @@ angular.module('jayMapApp', [
   })
 
   .config(function($translateProvider) {
-    $translateProvider.translations('en', {
-      SIGNUP: 'Sign up',
-      LOGIN: 'Log in',
-      LANG_BUTTON: 'Language',
-      LANG_BUTTON_EN: 'English',
-      LANG_BUTTON_DE: 'German'
-    })
-    .translations('de', {
-      SIGNUP: 'Registrieren',
-      LOGIN: 'Einloggen',
-      LANG_BUTTON: 'Sprache',
-      LANG_BUTTON_EN: 'Englisch',
-      LANG_BUTTON_DE: 'Deutsch'
+    $translateProvider.useStaticFilesLoader({
+      prefix: 'i18n/lang-',
+      suffix: '.json'
     });
     $translateProvider.preferredLanguage('de');
     //$translateProvider.determinePreferredLanguage();

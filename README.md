@@ -1,5 +1,7 @@
 # JayMap
 
+![travis-ci](https://travis-ci.org/Kageetai/JayMap.svg)
+
 > Angular.js and MongoDB web app for displaying shops and event for [Jayvolution](jayvolution-ev.de) and [J-Tränk](j-traenk.de)
 
 This project is based on the wonderful [generator-angular-fullstsck](https://github.com/DaftMonk/generator-angular-fullstack).
