@@ -3,7 +3,20 @@
 describe('Directive: clickToEdit', function () {
 
   // load the directive's module and view
-  beforeEach(module('jayMapApp'));
+  beforeEach(module('jayMapApp', function ($provide, $translateProvider) {
+
+    $provide.factory('customLoader', function ($q) {
+      return function () {
+        var deferred = $q.defer();
+        deferred.resolve({});
+        return deferred.promise;
+      };
+    });
+
+    $translateProvider.useLoader('customLoader');
+
+  }));
+
   beforeEach(module('directives/clickToEdit/clickToEdit.html'));
 
   var element, scope;
