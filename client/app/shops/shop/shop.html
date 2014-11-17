@@ -10,10 +10,10 @@
       <p ng-if="isAdmin()" class="shop-address"><span click-to-edit="shop.address">{{shop.address}}</span></p>
       <p ng-if="!isAdmin()" class="shop-address">{{shop.address}}</p>
 
-      <p ng-if="isAdmin() && shop.link"class="shop-link">Website: <a ng-href="{{shop.link}}"><span click-to-edit="shop.link">{{shop.link}}</span></a></p>
-      <p ng-if="!isAdmin() && shop.link"class="shop-link">Website: <a ng-href="{{shop.link}}">{{shop.link}}</a></p>
+      <p ng-if="isAdmin() && shop.link"class="shop-link">{{ 'WEBSITE' | translate }}: <a ng-href="{{shop.link}}"><span click-to-edit="shop.link">{{shop.link}}</span></a></p>
+      <p ng-if="!isAdmin() && shop.link"class="shop-link">{{ 'WEBSITE' | translate }}: <a ng-href="{{shop.link}}">{{shop.link}}</a></p>
 
-      <p ng-if="isAdmin() && shop.description"><span click-to-edit="shop.description" use-textarea="true">{{shop.description || "no description"}}</span></p>
+      <p ng-if="isAdmin() && shop.description"><span click-to-edit="shop.description" use-textarea="true">{{shop.description || 'NO_DESCRIPTION' | translate}}</span></p>
       <p ng-if="!isAdmin() && shop.description">{{shop.description}}</p>
 
     </div>

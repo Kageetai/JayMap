@@ -1,15 +1,15 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h1 class="page-header">Add new shop:</h1>
+      <h1 class="page-header">{{ 'ADD_NEW_SHOP' | translate }}:</h1>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-12">
-      <div class="alert alert-success" role="alert" ng-show="submittedSuccess"><strong>Success!</strong> The now shop was added to our database. Thank you!</div>
-      <div class="alert alert-danger" role="alert" ng-show="submittedNoLocation"><strong>Error!</strong> I couldn't find the address!</div>
-      <div class="alert alert-danger" role="alert" ng-show="submittedError"><strong>Error!</strong> Some strange error happened! Maybe try again for now...</div>
+      <div class="alert alert-success" role="alert" ng-show="submittedSuccess"><strong>{{ 'SUCCESS' | translate }}</strong> {{ 'SHOP_ADDED_TO_DATABASE' | translate }} {{ 'THANK_YOU' | translate }}</div>
+      <div class="alert alert-danger" role="alert" ng-show="submittedNoLocation"><strong>{{ 'ERROR' | translate }}</strong> {{ 'ADDRESS_NOT_FOUND' | translate }}</div>
+      <div class="alert alert-danger" role="alert" ng-show="submittedError"><strong>{{ 'ERROR' | translate }}</strong> {{ 'UNKNOWN_ERROR' | translate }}</div>
     </div>
   </div>
 
@@ -19,27 +19,27 @@
 
         <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
                                             'has-error': form.name.$invalid && submitted && !submittedSuccess }">
-          <label>Name</label>
+          <label>{{ 'NAME' | translate }}</label>
 
           <input type="text" name="name" class="form-control" ng-model="newShop.name"
                  required/>
           <p class="help-block" ng-show="form.name.$error.required && submitted && !submittedSuccess">
-            A name is required
+            {{ 'NAME_REQUIRED' | translate }}
           </p>
         </div>
 
         <div class="form-group" ng-class="{ 'has-success': form.address.$valid && submitted && submittedSuccess && !submittedNoLocation,
                                             'has-error': form.address.$invalid && submitted && !submittedSuccess || submittedNoLocation }">
-          <label>Address</label>
+          <label>{{ 'ADDRESS' | translate }}</label>
 
           <input type="address" name="address" class="form-control" ng-model="newShop.address"
                  required
                  mongoose-error/>
           <p class="help-block" ng-show="form.address.$error.address && submitted && !submittedSuccess || submittedNoLocation">
-            Doesn't look like a valid address.
+            {{ 'UNKNOWN_ADDRESS' | translate }}
           </p>
           <p class="help-block" ng-show="form.address.$error.required && submitted && !submittedSuccess">
-            What's the address?
+            {{ 'ADDRESS_REQUIRED' | translate }}
           </p>
           <p class="help-block" ng-show="form.address.$error.mongoose">
             {{ errors.address }}
@@ -48,7 +48,7 @@
 
         <div class="form-group" ng-class="{ 'has-success': form.description.$valid && submitted && submittedSuccess && !submittedNoLocation,
                                             'has-error': form.description.$invalid && submitted && !submittedSuccess || submittedNoLocation }">
-          <label>Description <small>(optional)</small></label>
+          <label>{{ 'DESCRIPTION' | translate }} <small>({{ 'OPTIONAL' | translate }})</small></label>
 
           <textarea name="description" class="form-control" rows="5" ng-model="newShop.description"
           mongoose-error>
@@ -60,10 +60,10 @@
 
         <div>
           <button class="btn btn-default btn-lg" type="button" ng-click="showOnMap()">
-            1. Show on map
+            1. {{ 'SHOW_ON_MAP' | translate }}
           </button>
           <button class="btn btn-primary btn-lg" type="submit" ng-disabled="!newShop.latitude">
-            2. Submit
+            2. {{ 'SUBMIT' | translate }}
           </button>
         </div>
 

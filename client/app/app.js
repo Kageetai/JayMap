@@ -21,9 +21,16 @@ angular.module('jayMapApp', [
     $translateProvider.useStaticFilesLoader({
       prefix: 'i18n/lang-',
       suffix: '.json'
-    });
-    $translateProvider.preferredLanguage('de');
-    //$translateProvider.determinePreferredLanguage();
+    })
+    .registerAvailableLanguageKeys(['en', 'de'], {
+      'en_US': 'en',
+      'en_UK': 'en',
+      'de_DE': 'de',
+      'de_CH': 'de'
+    })
+    .fallbackLanguage('en')
+    .useLocalStorage()
+    .determinePreferredLanguage();
   })
 
   .config(['GoogleMapApiProvider'.ns(), function (GoogleMapApi) {

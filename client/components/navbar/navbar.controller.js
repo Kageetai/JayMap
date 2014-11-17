@@ -12,9 +12,9 @@ angular.module('jayMapApp')
 
     $scope.changeLanguage = function (key) {
       $translate.use(key).then(function (key) {
-        console.log("Sprache zu " + key + " gewechselt.");
+        //console.log("Sprache zu " + key + " gewechselt.");
       }, function (key) {
-        console.log("Irgendwas lief schief.");
+        //console.log("Irgendwas lief schief.");
       });
     };
 
