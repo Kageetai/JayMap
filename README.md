@@ -1,6 +1,6 @@
 # JayMap
 
-![travis-ci](https://travis-ci.org/Kageetai/JayMap.svg)
+[![Build Status](https://travis-ci.org/Kageetai/JayMap.svg?branch=master)](https://travis-ci.org/Kageetai/JayMap)
 
 > Angular.js and MongoDB web app for displaying shops and event for [Jayvolution](jayvolution-ev.de) and [J-Tränk](j-traenk.de)
 
