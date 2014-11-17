@@ -31,10 +31,13 @@
 @import 'shops/shop/shop.less';
 @import 'shops/shops.less';
 @import 'variables.less';
+@import 'modal/modal.less';
 @import '/client/directives/clickToEdit/clickToEdit.less';
 // endinjector
 
 body { padding-top: @navbar-height + @navbar-margin-bottom; }
+
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 
 .navbar {
   box-shadow: 0 1px 5px #777;

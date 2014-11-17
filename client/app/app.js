@@ -5,6 +5,7 @@ angular.module('jayMapApp', [
   'ngResource',
   'ngSanitize',
   'ui.router',
+  'ui.bootstrap',
   'ngStorage',
   'pascalprecht.translate',
   'google-maps'.ns()
@@ -40,13 +41,6 @@ angular.module('jayMapApp', [
       libraries: 'weather,geometry,visualization'
     });
   }])
-
-  .directive('navbarCollapse', function () {
-    return function postLink(scope, element) {
-      var nav = element.find('.navbar-collapse');
-      element.find('button.navbar-toggle').click(function() { nav.collapse('toggle'); });
-    };
-  })
 
   .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
     return {
@@ -84,8 +78,8 @@ angular.module('jayMapApp', [
       });
     });
 
-    $rootScope.$on('$stateChangeSuccess', function (event, next) {
-      // collapse navbar
-      angular.element('.navbar-collapse').collapse('hide');
-    });
+    //$rootScope.$on('$stateChangeSuccess', function (event, next) {
+    //  // collapse navbar
+    //  angular.element('.navbar-collapse').collapse('hide');
+    //});
   });
