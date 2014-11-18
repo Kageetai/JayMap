@@ -41,6 +41,16 @@ var all = {
     }
   },
 
+  sendgrid: {
+    options: {
+      auth: {
+        api_user: 'Kageetai',
+        api_key: 'sendgrid4320'
+      }
+    },
+    from: 'admin@jaymap.de'
+  },
+
   facebook: {
     clientID:     process.env.FACEBOOK_ID || 'id',
     clientSecret: process.env.FACEBOOK_SECRET || 'secret',

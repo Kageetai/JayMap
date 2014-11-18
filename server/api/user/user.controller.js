@@ -13,14 +13,7 @@ var validationError = function(res, err) {
 var nodemailer = require('nodemailer');
 var sgTransport = require('nodemailer-sendgrid-transport');
 
-var options = {
-  auth: {
-    api_user: 'Kageetai',
-    api_key: 'sendgrid4320'
-  }
-};
-
-var mailer = nodemailer.createTransport(sgTransport(options));
+var mailer = nodemailer.createTransport(sgTransport(config.sendgrid.options));
 
 /**
  * Get list of users
@@ -49,7 +42,7 @@ exports.create = function (req, res, next) {
     var email = {
       to: ['ma@kageetai.net'],
       from: 'admin@jaymap.de',
-      subject: 'Hi there',
+      subject: config.sendgrid.from,
       text: 'New User: '+newUser.name + ' Mail: '+newUser.email,
       html: '<b>New User: '+newUser.name + ' Mail: '+newUser.email+'</b>'
     };
