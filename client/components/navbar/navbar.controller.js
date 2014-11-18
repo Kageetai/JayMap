@@ -25,6 +25,8 @@ angular.module('jayMapApp')
     });
 
     $scope.changeLanguage = function (key) {
+      $scope.isCollapsed = true;
+
       $translate.use(key).then(function () {
         $translate(['ALL_SHOPS', 'NEW_SHOP']).then(function (translations) {
           $scope.menu = [{
