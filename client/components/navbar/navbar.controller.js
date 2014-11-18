@@ -11,7 +11,7 @@ angular.module('jayMapApp')
     //}];
 
     $translate(['ALL_SHOPS', 'NEW_SHOP']).then(function (translations) {
-      scope.menu = [{
+      $scope.menu = [{
         'title': translations.ALL_SHOPS,
         'link': '/shops'
       }, {
@@ -22,7 +22,15 @@ angular.module('jayMapApp')
 
     $scope.changeLanguage = function (key) {
       $translate.use(key).then(function () {
-        //console.log("Sprache zu " + key + " gewechselt.");
+        $translate(['ALL_SHOPS', 'NEW_SHOP']).then(function (translations) {
+          $scope.menu = [{
+            'title': translations.ALL_SHOPS,
+            'link': '/shops'
+          }, {
+            'title': translations.NEW_SHOP,
+            'link': '/shops/new'
+          }];
+        });
       });
     };
 
