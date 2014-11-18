@@ -9,6 +9,19 @@ var validationError = function(res, err) {
   return res.json(422, err);
 };
 
+// configure node-mailer
+var nodemailer = require('nodemailer');
+var sgTransport = require('nodemailer-sendgrid-transport');
+
+var options = {
+  auth: {
+    api_user: 'Kageetai',
+    api_key: 'sendgrid4320'
+  }
+};
+
+var mailer = nodemailer.createTransport(sgTransport(options));
+
 /**
  * Get list of users
  * restriction: 'admin'
@@ -31,6 +44,24 @@ exports.create = function (req, res, next) {
     if (err) return validationError(res, err);
     var token = jwt.sign({_id: user._id }, config.secrets.session, { expiresInMinutes: 60*5 });
     res.json({ token: token });
+
+    // send mail about new user to all admin
+    var email = {
+      to: ['ma@kageetai.net'],
+      from: 'admin@jaymap.de',
+      subject: 'Hi there',
+      text: 'New User: '+newUser.name + ' Mail: '+newUser.email,
+      html: '<b>New User: '+newUser.name + ' Mail: '+newUser.email+'</b>'
+    };
+
+    mailer.sendMail(email, function(err, res) {
+      if (err) {
+        console.log(err);
+        return handleError(res, err);
+      }
+      console.log(res);
+      return res;
+    });
   });
 };
 
