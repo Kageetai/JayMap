@@ -10,6 +10,10 @@ angular.module('jayMapApp')
     //  'link': '/shops/new'
     //}];
 
+    $scope.$on('$stateChangeSuccess', function () {
+      $scope.isCollapsed = true;
+    });
+
     $translate(['ALL_SHOPS', 'NEW_SHOP']).then(function (translations) {
       $scope.menu = [{
         'title': translations.ALL_SHOPS,
