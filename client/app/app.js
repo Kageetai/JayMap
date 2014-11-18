@@ -20,7 +20,7 @@ angular.module('jayMapApp', [
 
   .config(function($translateProvider) {
     $translateProvider.useStaticFilesLoader({
-      prefix: 'i18n/lang-',
+      prefix: 'assets/i18n/lang-',
       suffix: '.json'
     })
     .registerAvailableLanguageKeys(['en', 'de'], {
