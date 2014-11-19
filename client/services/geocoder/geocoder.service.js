@@ -3,7 +3,7 @@
 //SOURCE: https://gist.github.com/benmj/6380466
 
 angular.module('jayMapApp')
-  .factory('Geocoder', ['$localStorage', '$q', '$timeout', 'GoogleMapApi'.ns(), function ($localStorage, $q, $timeout, GoogleMapApi) {
+  .factory('Geocoder', ['$localStorage', '$q', '$timeout', 'uiGmapGoogleMapApi', function ($localStorage, $q, $timeout, GoogleMapApi) {
     var locations = $localStorage.locations ? JSON.parse($localStorage.locations) : {};
 
     var queue = [];

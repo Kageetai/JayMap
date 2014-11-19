@@ -8,7 +8,7 @@ angular.module('jayMapApp', [
   'ui.bootstrap',
   'ngStorage',
   'pascalprecht.translate',
-  'google-maps'.ns()
+  'uiGmapgoogle-maps'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
@@ -34,7 +34,7 @@ angular.module('jayMapApp', [
     .determinePreferredLanguage();
   })
 
-  .config(['GoogleMapApiProvider'.ns(), function (GoogleMapApi) {
+  .config(['uiGmapGoogleMapApiProvider', function (GoogleMapApi) {
     GoogleMapApi.configure({
       key: 'AIzaSyBPuXezFtTaSW78idlAzQw_11VsegsO5LM',
       v: '3.17',
