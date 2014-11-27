@@ -5,7 +5,10 @@ angular.module('jayMapApp', [
   'ngResource',
   'ngSanitize',
   'ui.router',
-  'google-maps'.ns()
+  'ui.bootstrap',
+  'ngStorage',
+  'pascalprecht.translate',
+  'uiGmapgoogle-maps'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
@@ -15,20 +18,29 @@ angular.module('jayMapApp', [
     $httpProvider.interceptors.push('authInterceptor');
   })
 
-  .config(['GoogleMapApiProvider'.ns(), function (GoogleMapApi) {
+  .config(function($translateProvider) {
+    $translateProvider.useStaticFilesLoader({
+      prefix: 'assets/i18n/lang-',
+      suffix: '.json'
+    })
+    .registerAvailableLanguageKeys(['en', 'de'], {
+      'en_US': 'en',
+      'en_UK': 'en',
+      'de_DE': 'de',
+      'de_CH': 'de'
+    })
+    .fallbackLanguage('en')
+    .useLocalStorage()
+    .determinePreferredLanguage();
+  })
+
+  .config(['uiGmapGoogleMapApiProvider', function (GoogleMapApi) {
     GoogleMapApi.configure({
       key: 'AIzaSyBPuXezFtTaSW78idlAzQw_11VsegsO5LM',
       v: '3.17',
       libraries: 'places'
     });
   }])
-
-  .directive('navbarCollapse', function () {
-    return function postLink(scope, element) {
-      var nav = element.find('.navbar-collapse');
-      element.find('button.navbar-toggle').click(function() { nav.collapse('toggle'); });
-    };
-  })
 
   .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
     return {
@@ -65,4 +77,9 @@ angular.module('jayMapApp', [
         }
       });
     });
+
+    //$rootScope.$on('$stateChangeSuccess', function (event, next) {
+    //  // collapse navbar
+    //  angular.element('.navbar-collapse').collapse('hide');
+    //});
   });

@@ -1,17 +1,44 @@
 'use strict';
 
 angular.module('jayMapApp')
-  .controller('NavbarCtrl', function ($scope, $location, Auth) {
-    $scope.menu = [{
-      'title': 'Home',
-      'link': '/'
-    }, {
-      'title': 'All Shops',
-      'link': '/shops'
-    }, {
-      'title': 'New Shop',
-      'link': '/shops/new'
-    }];
+  .controller('NavbarCtrl', function ($scope, $location, $translate, Auth) {
+    //$scope.menu = [{
+    //  'title': 'All Shops',
+    //  'link': '/shops'
+    //}, {
+    //  'title': 'New Shop',
+    //  'link': '/shops/new'
+    //}];
+
+    $scope.$on('$stateChangeSuccess', function () {
+      $scope.isCollapsed = true;
+    });
+
+    $translate(['ALL_SHOPS', 'NEW_SHOP']).then(function (translations) {
+      $scope.menu = [{
+        'title': translations.ALL_SHOPS,
+        'link': '/shops'
+      }, {
+        'title': translations.NEW_SHOP,
+        'link': '/shops/new'
+      }];
+    });
+
+    $scope.changeLanguage = function (key) {
+      $scope.isCollapsed = true;
+
+      $translate.use(key).then(function () {
+        $translate(['ALL_SHOPS', 'NEW_SHOP']).then(function (translations) {
+          $scope.menu = [{
+            'title': translations.ALL_SHOPS,
+            'link': '/shops'
+          }, {
+            'title': translations.NEW_SHOP,
+            'link': '/shops/new'
+          }];
+        });
+      });
+    };
 
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;

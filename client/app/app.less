@@ -28,13 +28,25 @@
 @import 'admin/admin.less';
 @import 'main/main.less';
 @import 'shops/new/new.less';
+@import 'shops/shop/shop.less';
 @import 'shops/shops.less';
 @import 'variables.less';
+@import 'modal/modal.less';
+@import '/client/directives/clickToEdit/clickToEdit.less';
 // endinjector
+
+body { padding-top: @navbar-height + @navbar-margin-bottom; }
+
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+.navbar {
+  box-shadow: 0 1px 5px #777;
+  border-bottom: 1px solid @brand-primary;
+}
 
 .angular-google-map-container {
   height: 400px;
-//  margin-top: -@navbar-margin-bottom;
+  max-width: 100%;
 
   .cluster > div {
     color: white !important;

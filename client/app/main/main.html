@@ -1,7 +1,7 @@
-<ui-gmap-google-map
+<ui-gmap-google-map class="main-map"
   center="map.center"
   zoom="map.zoom"
-  draggable="true"
+  pan="map.pan"
   options="map.options">
   <ui-gmap-markers
     models="shops"
@@ -19,22 +19,28 @@
   </ui-gmap-search-box>
 </ui-gmap-google-map>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="selShop" ng-show="selShop">
-        <img class="pull-right" ng-src="{{selShop.image}}" alt="{{selShop.name}}"/>
-        <a ng-href="{{selShop.link}}"><h2>{{selShop.name}}</h2></a>
-        <p>{{selShop.address}}</p>
-        <p>{{selShop.description}}</p>
+<div class="selShop-container" ng-show="selShop">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="selShop">
+          <a class="selShop-img thumbnail" ng-show="selShop.image" ng-href="{{selShop.image}}"><img ng-src="{{selShop.image}}" alt="{{selShop.name}}"/></a>
+          <a class="selShop-title" ng-href="/shops/{{selShop._id}}"><h2>{{selShop.name}}</h2></a>
+
+          <p class="selShop-address">{{selShop.address}}</p>
+
+          <p ng-show="selShop.link" class="selShop-link">{{ 'WEBSITE' | translate }}: <a ng-href="{{selShop.link}}">{{selShop.link}}</a></p>
+
+          <p ng-show="selShop.describtion">{{selShop.description}}</p>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<footer class="footer">
-  <div class="container">
-    <p><a href="http://Kageetai.net">@kageetai</a> |
-      <a href="https://github.com/Kageetai/JayMap/issues?state=open">Issues</a></p>
-  </div>
-</footer>
+<!--<footer class="footer">-->
+  <!--<div class="container">-->
+    <!--<p><a href="http://Kageetai.net">@kageetai</a> |-->
+      <!--<a href="https://github.com/Kageetai/JayMap/issues?state=open">Issues</a></p>-->
+  <!--</div>-->
+<!--</footer>-->

@@ -1,5 +1,6 @@
 'use strict';
 
+var _ = require('lodash');
 var User = require('./user.model');
 var passport = require('passport');
 var config = require('../../config/environment');
@@ -8,6 +9,12 @@ var jwt = require('jsonwebtoken');
 var validationError = function(res, err) {
   return res.json(422, err);
 };
+
+// configure node-mailer
+var nodemailer = require('nodemailer');
+var sgTransport = require('nodemailer-sendgrid-transport');
+
+var mailer = nodemailer.createTransport(sgTransport(config.sendgrid.options));
 
 /**
  * Get list of users
@@ -31,6 +38,33 @@ exports.create = function (req, res, next) {
     if (err) return validationError(res, err);
     var token = jwt.sign({_id: user._id }, config.secrets.session, { expiresInMinutes: 60*5 });
     res.json({ token: token });
+
+    // send mail about new user to all admin
+    User.find({role: 'admin'}, '-salt -hashedPassword', function (err, users) {
+      if(err) return res.send(500, err);
+
+      var mails = [];
+      _(users).forEach(function(u) {
+        mails.push(u.email);
+      });
+
+      var email = {
+        to: mails,
+        from: 'admin@jaymap.de',
+        subject: config.sendgrid.from,
+        text: 'New User: '+newUser.name + ' Mail: '+newUser.email,
+        html: '<b>New User: '+newUser.name + ' Mail: '+newUser.email+'</b>'
+      };
+
+      mailer.sendMail(email, function(err, res) {
+        if (err) {
+          console.log(err);
+          return handleError(res, err);
+        }
+        console.log(res);
+        return res;
+      });
+    });
   });
 };
 
@@ -99,3 +133,7 @@ exports.me = function(req, res, next) {
 exports.authCallback = function(req, res, next) {
   res.redirect('/');
 };
+
+function handleError(res, err) {
+  return res.send(500, err);
+}

@@ -1,0 +1,34 @@
+<div class="shop-container container">
+  <div class="row">
+    <div class="col-md-12">
+      <a class="shop-img thumbnail" ng-show="shop.image" ng-href="{{shop.image}}"><img
+        ng-src="{{shop.image}}" alt="{{shop.name}}"/></a>
+
+      <h1 ng-if="isAdmin()" class="page-header"><span click-to-edit="shop.name">{{shop.name}}</span></h1>
+      <h1 ng-if="!isAdmin()" class="page-header">{{shop.name}}</h1>
+
+      <p ng-if="isAdmin()" class="shop-address"><span click-to-edit="shop.address">{{shop.address}}</span></p>
+      <p ng-if="!isAdmin()" class="shop-address">{{shop.address}}</p>
+
+      <p ng-if="isAdmin() && shop.link"class="shop-link">{{ 'WEBSITE' | translate }}: <a ng-href="{{shop.link}}"><span click-to-edit="shop.link">{{shop.link}}</span></a></p>
+      <p ng-if="!isAdmin() && shop.link"class="shop-link">{{ 'WEBSITE' | translate }}: <a ng-href="{{shop.link}}">{{shop.link}}</a></p>
+
+      <p ng-if="isAdmin() && shop.description"><span click-to-edit="shop.description" use-textarea="true">{{shop.description || 'NO_DESCRIPTION' | translate}}</span></p>
+      <p ng-if="!isAdmin() && shop.description">{{shop.description}}</p>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <ui-gmap-google-map
+        center="map.center"
+        zoom="map.zoom"
+        pan="map.pan"
+        options="map.options" >
+        <ui-gmap-marker coords="shop" idkey="1" icon="'assets/images/norev/logo-green.png'">
+        </ui-gmap-marker>
+      </ui-gmap-google-map>
+    </div>
+  </div>
+</div>

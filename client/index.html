@@ -9,7 +9,7 @@
     <base href="/">
     <title>JayMap</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(client) app/vendor.css -->
       <!-- bower:css -->
@@ -51,13 +51,18 @@
       <!-- bower:js -->
       <script src="bower_components/jquery/dist/jquery.js"></script>
       <script src="bower_components/angular/angular.js"></script>
-      <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
       <script src="bower_components/angular-resource/angular-resource.js"></script>
       <script src="bower_components/angular-cookies/angular-cookies.js"></script>
       <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+      <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
       <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
       <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
+      <script src="bower_components/ngstorage/ngStorage.js"></script>
+      <script src="bower_components/angular-translate/angular-translate.js"></script>
+      <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+      <script src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+      <script src="bower_components/angular-translate-storage-local/angular-translate-storage-local.js"></script>
       <!-- endbower -->
     <!-- endbuild -->
 
@@ -72,15 +77,20 @@
       <script src="app/admin/admin.js"></script>
       <script src="app/main/main.controller.js"></script>
       <script src="app/main/main.js"></script>
-      <script src="app/shops/geocode.service.js"></script>
       <script src="app/shops/new/new.controller.js"></script>
       <script src="app/shops/new/new.js"></script>
+      <script src="app/shops/shop/shop.controller.js"></script>
+      <script src="app/shops/shop/shop.js"></script>
       <script src="app/shops/shops.controller.js"></script>
       <script src="app/shops/shops.js"></script>
       <script src="components/auth/auth.service.js"></script>
       <script src="components/auth/user.service.js"></script>
+      <script src="components/modal/modal.service.js"></script>
       <script src="components/mongoose-error/mongoose-error.directive.js"></script>
       <script src="components/navbar/navbar.controller.js"></script>
+      <script src="directives/clickToEdit/clickToEdit.directive.js"></script>
+      <script src="services/geocoder/geocoder.service.js"></script>
+      <script src="services/shop/shop.service.js"></script>
       <!-- endinjector -->
     <!-- endbuild -->
 </body>

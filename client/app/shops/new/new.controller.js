@@ -1,42 +1,41 @@
 'use strict';
 
 angular.module('jayMapApp')
-  .controller('NewCtrl', function ($scope, $http, Geocode) {
+  .controller('NewCtrl', function ($scope, $http, Shop, Geocoder) {
     $scope.map = {
       center: {
         latitude: 52.5167,
         longitude: 13.3833
       },
       zoom: 11,
-      draggable: true,
+      pan: false,
       options: {
-        scrollwheel: true
+        scrollwheel: false,
+        draggable: false,
+        disableDefaultUI: true
       }
     };
 
-    $scope.newShop = { _id: 1 };
+    $scope.newShop = new Shop();
 
     $scope.showOnMap = function () {
       if ($scope.newShop.address.length === '') {
         return;
       }
 
-      Geocode.get({
-        address: $scope.newShop.address.replace(' ', '+')
-      }).$promise.then(function (data) {
-          if (data.status === 'OK') {
-            $scope.newShop.latitude = data.results[0].geometry.location.lat;
-            $scope.newShop.longitude = data.results[0].geometry.location.lng;
-            $scope.map.center.latitude = data.results[0].geometry.location.lat;
-            $scope.map.center.longitude = data.results[0].geometry.location.lng;
-            $scope.map.zoom = 15;
-          } else if (data.status === 'ZERO_RESULTS') {
+      Geocoder.latLngForAddress($scope.newShop.address.replace(' ', '+'))
+        .then(function (data) {
+          $scope.newShop.latitude = data.lat;
+          $scope.newShop.longitude = data.lng;
+          $scope.map.center.latitude = data.lat;
+          $scope.map.center.longitude = data.lng;
+          $scope.map.zoom = 15;
+        }, function (error) {
+          if (error.type === 'zero') {
             $scope.submittedNoLocation = true;
           } else {
             $scope.submittedError = true;
           }
-        }, function () {
-          $scope.submittedError = true;
         });
     };
 
@@ -48,27 +47,10 @@ angular.module('jayMapApp')
       }
 
       if (form.$valid) {
-        Geocode.get({
-          address: $scope.newShop.address.replace(' ', '+')
-        }).$promise.then(function (data) {
-            if (data.status === 'OK') {
-              $http.post('/api/shops', {
-                name: $scope.newShop.name,
-                address: $scope.newShop.address,
-                latitude: $scope.newShop.latitude,
-                longitude: $scope.newShop.longitude
-              }).success(function () {
-                $scope.newShop = {};
-                $scope.submittedSuccess = true;
-              });
-            } else if (data.status === 'ZERO_RESULTS') {
-              $scope.submittedNoLocation = true;
-            } else {
-              $scope.submittedError = true;
-            }
-          }, function () {
-            $scope.submittedError = true;
-          });
+        $scope.newShop.$save(function() {
+          $scope.newShop = new Shop();
+          $scope.submittedSuccess = true;
+        });
       }
     };
   }

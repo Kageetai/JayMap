@@ -1,0 +1,12 @@
+<div class="clickToEdit">
+  <div ng-hide="view.editorEnabled">
+    {{value}}
+    <a class="edit" ng-click="enableEditor()"><i class="fa fa-pencil"></i></a>
+  </div>
+  <div ng-show="view.editorEnabled">
+    <input ng-if="!textarea" class="form-control" ng-model="view.editableValue">
+    <textarea ng-if="textarea" class="form-control" rows="5" ng-model="view.editableValue"></textarea>
+    <a class="save" ng-click="save()"><i class="fa fa-check"></i></a>
+    <a class="cancel" ng-click="disableEditor()"><i class="fa fa-times"></i></a>
+  </div>
+</div>

@@ -3,7 +3,19 @@
 describe('Controller: MainCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('jayMapApp'));
+  beforeEach(module('jayMapApp', function ($provide, $translateProvider) {
+
+    $provide.factory('customLoader', function ($q) {
+      return function () {
+        var deferred = $q.defer();
+        deferred.resolve({});
+        return deferred.promise;
+      };
+    });
+
+    $translateProvider.useLoader('customLoader');
+
+  }));
 
   var MainCtrl,
       scope,

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jayMapApp')
-  .controller('ShopsCtrl', function ($scope, $http, Auth) {
+  .controller('ShopsCtrl', function ($scope, $http, Auth, Shop) {
     $scope.message = 'Hello';
 
     $scope.shops = [];
@@ -10,15 +10,9 @@ angular.module('jayMapApp')
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
 
-    $http.get('/api/shops').success(function (shops) {
-      $scope.shops = shops;
-
+    $scope.shops = Shop.query(function () {
       _.each($scope.shops, function (shop) {
-        shop.icon = 'assets/images/logo-green.png';
-        shop.closeClick = function () {
-          shop.showWindow = false;
-          $scope.$apply();
-        };
+        shop.icon = 'assets/images/norev/logo-green.png';
         shop.onClicked = function () {
           $scope.selShop = shop;
         };
@@ -26,7 +20,8 @@ angular.module('jayMapApp')
     });
 
     $scope.deleteShop = function (shop) {
-      $http.delete('/api/shops/' + shop._id);
-      $scope.shops.splice($scope.shops.indexOf(shop), 1);
+      shop.$delete(function() {
+        $scope.shops.splice($scope.shops.indexOf(shop), 1);
+      });
     };
   });

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-      <h1>Sign up</h1>
+      <h1>{{ 'SIGNUP' | translate }}</h1>
     </div>
   </div>
 
@@ -11,30 +11,30 @@
 
         <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
                                             'has-error': form.name.$invalid && submitted }">
-          <label>Name</label>
+          <label>{{ 'NAME' | translate }}</label>
 
           <input type="text" name="name" class="form-control" ng-model="user.name"
                  required/>
 
           <p class="help-block" ng-show="form.name.$error.required && submitted">
-            A name is required
+            {{ 'NAME_REQUIRED' | translate }}
           </p>
         </div>
 
         <div class="form-group" ng-class="{ 'has-success': form.email.$valid && submitted,
                                             'has-error': form.email.$invalid && submitted }">
-          <label>Email</label>
+          <label>{{ 'EMAIL' | translate }}</label>
 
           <input type="email" name="email" class="form-control" ng-model="user.email"
                  required
                  mongoose-error/>
 
           <p class="help-block" ng-show="form.email.$error.email && submitted">
-            Doesn't look like a valid email.
+            {{ 'VALID_MAIL_REQUIRED' | translate }}
           </p>
 
           <p class="help-block" ng-show="form.email.$error.required && submitted">
-            What's your email address?
+            {{ 'MAIL_REQUIRED' | translate }}
           </p>
 
           <p class="help-block" ng-show="form.email.$error.mongoose">
@@ -44,7 +44,7 @@
 
         <div class="form-group" ng-class="{ 'has-success': form.password.$valid && submitted && (form.password == form.password2 && submitted),
                                             'has-error': form.password.$invalid && submitted || (form.password != form.password2 && submitted) }">
-          <label>Password</label>
+          <label>{{ 'PASSWORD' | translate }}</label>
 
           <input type="password" name="password" class="form-control" ng-model="user.password"
                  ng-minlength="3"
@@ -53,12 +53,12 @@
 
           <p class="help-block"
              ng-show="(form.password.$error.minlength || form.password.$error.required) && submitted">
-            Password must be at least 3 characters.
+            {{ 'PASSWORD_MIN_LENGTH' | translate }}
           </p>
 
           <p class="help-block"
              ng-show="(form.password != form.password2) && submitted">
-            Passwords must match.
+            {{ 'PASSWORD_MISMATCH' | translate }}
           </p>
 
           <p class="help-block" ng-show="form.password.$error.mongoose">
@@ -68,7 +68,7 @@
 
         <div class="form-group" ng-class="{ 'has-success': form.password2.$valid && submitted && (form.password == form.password2 && submitted),
                                             'has-error': form.password2.$invalid && submitted || (form.password != form.password2 && submitted) }">
-          <label>Retype Password</label>
+          <label>{{ 'RETYPE_PASSWORD' | translate }}</label>
 
           <input type="password" name="password2" class="form-control" ng-model="user.password2"
                  ng-minlength="3"
@@ -77,12 +77,12 @@
 
           <p class="help-block"
              ng-show="(form.password2.$error.minlength || form.password2.$error.required) && submitted">
-            Password must be at least 3 characters.
+            {{ 'PASSWORD_MIN_LENGTH' | translate }}
           </p>
 
           <p class="help-block"
              ng-show="(form.password != form.password2) && submitted">
-            Passwords must match.
+            {{ 'PASSWORD_MISMATCH' | translate }}
           </p>
 
           <p class="help-block" ng-show="form.password2.$error.mongoose">
@@ -92,24 +92,24 @@
 
         <div>
           <button class="btn btn-primary btn-lg btn-login" type="submit">
-            Sign up
+            {{ 'SIGNUP' | translate }}
           </button>
           <a class="btn btn-default btn-lg btn-register" href="/login">
-            Login
+            {{ 'LOGIN' | translate }}
           </a>
         </div>
 
         <hr>
         <div>
           <a class="btn btn-facebook" href="" ng-click="loginOauth('facebook')">
-            <i class="fa fa-facebook"></i> Connect with Facebook
+            <i class="fa fa-facebook"></i> {{ 'CONNECT_WITH_FACEBOOK' | translate }}
           </a>
         </div>
       </form>
     </div>
 
     <div class="col-md-6">
-      <p>Please sign up to get an account and be able to insert new shops into our database.</p>
+      <p>{{ 'PLEASE_SIGNUP_TO' | translate }}</p>
     </div>
   </div>
 </div>

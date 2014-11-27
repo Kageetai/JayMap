@@ -14,7 +14,7 @@
       "less": true,
       "uirouter": true,
       "bootstrap": true,
-      "uibootstrap": false,
+      "uibootstrap": true,
       "mongoose": true,
       "auth": true,
       "oauth": true,
