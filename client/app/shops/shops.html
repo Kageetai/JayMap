@@ -1,7 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h1 class="page-header">{{ 'SHOPS' | translate }}:</h1>
+      <input type="text" class="form-control shops-table-search" placeholder="{{ 'SEARCH' | translate }}" ng-model="searchTerm">
+
+      <h1 class="page-header">{{ 'SHOPS' | translate }}</h1>
 
         <table class="shop-table table table-striped">
           <thead>
@@ -13,8 +15,10 @@
             <th ng-show="isAdmin()">&nbsp;</th>
           </tr>
           </thead>
-          <thead>
-          <tr ng-repeat="shop in shops" ng-class="{selected: shop == selShop}">
+          <tbody>
+          <tr ng-repeat="shop in shops | filter: searchTerm"
+              ng-class="{selected: shop == selShop}"
+              class="shop-table-shop">
             <td><a ng-href="/shops/{{shop._id}}">{{shop.name}}</a></td>
             <td>{{shop.address}}</td>
             <td>{{shop.stock ? "yes" : "no"}}</td>
@@ -29,7 +33,7 @@
               </a>
             </td>
           </tr>
-          </thead>
+          </tbody>
         </table>
     </div>
   </div>
