@@ -16,8 +16,6 @@
 </ui-gmap-google-map>
 
 <div class="selShop-container" ng-show="selShop">
-  <button type="button" class="close" ng-click="selShop = null"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -34,6 +32,8 @@
       </div>
     </div>
   </div>
+
+  <a class="close-caret" ng-click="selShop = null"><span class="caret"></span></a>
 </div>
 
 <!--<footer class="footer">-->
