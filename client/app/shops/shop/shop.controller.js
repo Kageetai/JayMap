@@ -7,8 +7,8 @@ angular.module('jayMapApp')
     $scope.getCurrentUser = Auth.getCurrentUser;
 
     $scope.shop = Shop.get({ id: $stateParams.id }, function() {
-      $scope.map.center.latitude = $scope.shop.latitude;
-      $scope.map.center.longitude = $scope.shop.longitude;
+      $scope.map.center.latitude = $scope.shop.location.latitude;
+      $scope.map.center.longitude = $scope.shop.location.longitude;
     }); // get() returns a single shop
 
     $scope.map = {

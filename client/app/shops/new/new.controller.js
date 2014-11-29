@@ -25,8 +25,8 @@ angular.module('jayMapApp')
 
       Geocoder.latLngForAddress($scope.newShop.address.replace(' ', '+'))
         .then(function (data) {
-          $scope.newShop.latitude = data.lat;
-          $scope.newShop.longitude = data.lng;
+          $scope.newShop.location.latitude = data.lat;
+          $scope.newShop.location.longitude = data.lng;
           $scope.map.center.latitude = data.lat;
           $scope.map.center.longitude = data.lng;
           $scope.map.zoom = 15;
