@@ -17,5 +17,6 @@ var ShopSchema = new Schema({
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now }
 });
+ShopSchema.index({ location: '2dsphere' });
 
 module.exports = mongoose.model('Shop', ShopSchema);
