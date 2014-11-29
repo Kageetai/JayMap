@@ -8,8 +8,10 @@ var ShopSchema = new Schema({
   address: String,
   description: String,
   stock: { type: Number, default: 100 },
-  latitude: Number,
-  longitude: Number,
+  location: {
+    latitude: Number,
+    longitude: Number
+  },
   image: String,
   link: String,
   createdAt: { type: Date, default: Date.now },
