@@ -1,6 +1,6 @@
 .main-map .angular-google-map-container {
   height: 100vh;
-  margin-top: -(@navbar-height + @navbar-margin-bottom);
+  margin-top: -(@navbar-height + @navbar-margin-bottom + 35px);
 
   .cluster > div {
     color: white !important;
@@ -47,22 +47,14 @@
     }
   }
 
-  &.ng-enter,
-  &.ng-leave {
-    .transition(all 500ms);
-    position: relative;
+  &.ng-hide-add.ng-hide-add-active,
+  &.ng-hide-remove.ng-hide-remove-active {
+    .transition(all 0.5s)
   }
 
-  &.ng-leave&.ng-leave-active,
-  &.ng-enter {
+  &.ng-hide {
     opacity: 0;
-    top: 100%;
-  }
-
-  &.ng-enter&.ng-enter-active,
-  &.ng-leave {
-    opacity: 1;
-    top: 0;
+    bottom: -33%;
   }
 
 }

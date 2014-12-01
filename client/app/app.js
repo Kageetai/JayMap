@@ -4,6 +4,7 @@ angular.module('jayMapApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
+  'ngAnimate',
   'ui.router',
   'ui.bootstrap',
   'ngStorage',
