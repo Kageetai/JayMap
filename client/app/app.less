@@ -35,13 +35,31 @@
 @import '/client/directives/clickToEdit/clickToEdit.less';
 // endinjector
 
-body { padding-top: @navbar-height + @navbar-margin-bottom; }
+body { padding-top: @navbar-height + @navbar-margin-bottom + 35px; }
 
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 
 .navbar {
   box-shadow: 0 1px 5px #777;
   border-bottom: 1px solid @brand-primary;
+
+  .navbar-brand > img {
+    height: @navbar-height * 1.5;
+
+    @media (min-width: @screen-sm-min) {
+      margin-top: -@navbar-height / 2;
+      height: @navbar-height * 2;
+    }
+  }
+
+  @media (min-width: @screen-sm-min) {
+    padding-top: 35px;
+  }
+
+  .navbar-collapse.in,
+  .navbar-collapse.collapsing {
+    padding-top: @navbar-height / 2;
+  }
 }
 
 .angular-google-map-container {
