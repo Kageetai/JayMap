@@ -7,6 +7,7 @@
   "LOGIN": "Login",
   "LOGOUT": "Logout",
   "ADMIN": "Administration",
+  "USERS": "Users",
   "EMAIL": "Email",
   "EMAIL_REQUIRED": "An email address is required",
   "PASSWORD": "Password",

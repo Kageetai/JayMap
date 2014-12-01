@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-sm-12">
       <h1 class="page-header">{{ 'ADD_NEW_SHOP' | translate }}:</h1>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-sm-12">
       <div class="alert alert-success" role="alert" ng-show="submittedSuccess"><strong>{{ 'SUCCESS' | translate }}</strong> {{ 'SHOP_ADDED_TO_DATABASE' | translate }} {{ 'THANK_YOU' | translate }}</div>
       <div class="alert alert-danger" role="alert" ng-show="submittedNoLocation"><strong>{{ 'ERROR' | translate }}</strong> {{ 'ADDRESS_NOT_FOUND' | translate }}</div>
       <div class="alert alert-danger" role="alert" ng-show="submittedError"><strong>{{ 'ERROR' | translate }}</strong> {{ 'UNKNOWN_ERROR' | translate }}</div>
@@ -14,7 +14,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-sm-6">
       <form class="form" name="form" ng-submit="addShop(form)" novalidate>
 
         <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
@@ -70,7 +70,7 @@
       </form>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-sm-6">
       <ui-gmap-google-map
           center="map.center"
           zoom="map.zoom"
