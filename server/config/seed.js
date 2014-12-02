@@ -15,7 +15,7 @@ Shop.find({}).remove(function () {
       stock: 100,
       latitude: 52.49861,
       longitude: 13.446149999999989,
-      image: "assets/images/yeoman.png",
+      image: "http://www.oushop.com/warp_sites/oushop.g6/files/Shop2.jpg",
       createdAt: "2013-10-22T09:34:23.519Z",
       updatedAt: "2013-10-31T13:24:23.236Z"
     },
