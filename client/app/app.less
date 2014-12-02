@@ -35,7 +35,7 @@
 @import '/client/directives/clickToEdit/clickToEdit.less';
 // endinjector
 
-body { padding-top: @navbar-height + @navbar-margin-bottom + 35px; }
+body { padding-top: @navbar-height + @navbar-margin-bottom + @navbar-padding-top; }
 
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 
@@ -53,7 +53,7 @@ body { padding-top: @navbar-height + @navbar-margin-bottom + 35px; }
   }
 
   @media (min-width: @screen-sm-min) {
-    padding-top: 35px;
+    padding-top: @navbar-padding-top;
   }
 
   .navbar-collapse.in,
