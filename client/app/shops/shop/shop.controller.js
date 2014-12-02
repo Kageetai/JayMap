@@ -19,7 +19,7 @@ angular.module('jayMapApp')
       zoom: 15,
       pan: false,
       options: {
-        scrollwheel: false,
+        scrollwheel: true,
         draggable: true,
         disableDefaultUI: true
       }
