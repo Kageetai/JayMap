@@ -76,6 +76,12 @@ angular.module('jayMapApp', [
         if (next.authenticate && !loggedIn) {
           $location.path('/login');
         }
+        if (!loggedIn && next.admin) {
+          $location.path('/login');
+        }
+        if (loggedIn && next.admin && !Auth.isAdmin()) {
+          $location.path('/'); //TODO admin warning
+        }
       });
     });
 
