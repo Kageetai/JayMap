@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-      <h1 class="page-header">{{ 'ADD_NEW_SHOP' | translate }}:</h1>
+      <h1 class="page-header">{{shop.name}} {{ 'EDIT' | translate | lowercase}}</h1>
     </div>
   </div>
 
-  <div class="row">
+  <div class="row" ng-show="submittedSuccess || submittedNoLocation || submittedError">
     <div class="col-sm-12">
-      <div class="alert alert-success" role="alert" ng-show="submittedSuccess"><strong>{{ 'SUCCESS' | translate }}</strong> {{ 'SHOP_ADDED_TO_DATABASE' | translate }} {{ 'THANK_YOU' | translate }}</div>
+      <div class="alert alert-success" role="alert" ng-show="submittedSuccess"><strong>{{ 'SUCCESS' | translate }}</strong> {{ 'SHOP_UPDATED' | translate }} {{ 'THANK_YOU' | translate }}</div>
       <div class="alert alert-danger" role="alert" ng-show="submittedNoLocation"><strong>{{ 'ERROR' | translate }}</strong> {{ 'ADDRESS_NOT_FOUND' | translate }}</div>
       <div class="alert alert-danger" role="alert" ng-show="submittedError"><strong>{{ 'ERROR' | translate }}</strong> {{ 'UNKNOWN_ERROR' | translate }}</div>
     </div>
@@ -15,13 +15,13 @@
 
   <div class="row">
     <div class="col-sm-6">
-      <form class="form" name="form" ng-submit="addShop(form)" novalidate>
+      <form class="form" name="form" ng-submit="saveShop(form)" novalidate>
 
         <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
                                             'has-error': form.name.$invalid && submitted && !submittedSuccess }">
           <label>{{ 'NAME' | translate }}</label>
 
-          <input type="text" name="name" class="form-control" ng-model="newShop.name"
+          <input type="text" name="name" class="form-control" ng-model="shop.name"
                  required/>
           <p class="help-block" ng-show="form.name.$error.required && submitted && !submittedSuccess">
             {{ 'NAME_REQUIRED' | translate }}
@@ -32,7 +32,7 @@
                                             'has-error': form.address.$invalid && submitted && !submittedSuccess || submittedNoLocation }">
           <label>{{ 'ADDRESS' | translate }}</label>
 
-          <input type="address" name="address" class="form-control" ng-model="newShop.address"
+          <input type="address" name="address" class="form-control" ng-model="shop.address"
                  required
                  mongoose-error/>
           <p class="help-block" ng-show="form.address.$error.address && submitted && !submittedSuccess || submittedNoLocation">
@@ -50,8 +50,8 @@
                                             'has-error': form.description.$invalid && submitted && !submittedSuccess || submittedNoLocation }">
           <label>{{ 'DESCRIPTION' | translate }} <small>({{ 'OPTIONAL' | translate }})</small></label>
 
-          <textarea name="description" class="form-control" rows="5" ng-model="newShop.description"
-          mongoose-error>
+          <textarea name="description" class="form-control" rows="5" ng-model="shop.description"
+                    mongoose-error>
           </textarea>
           <p class="help-block" ng-show="form.description.$error.mongoose">
             {{ errors.description }}
@@ -62,7 +62,7 @@
           <button class="btn btn-default btn-lg" type="button" ng-click="showOnMap()">
             1. {{ 'SHOW_ON_MAP' | translate }}
           </button>
-          <button class="btn btn-primary btn-lg" type="submit" ng-disabled="!newShop.latitude">
+          <button class="btn btn-primary btn-lg" type="submit" ng-disabled="!shop.latitude">
             2. {{ 'SUBMIT' | translate }}
           </button>
         </div>
@@ -72,11 +72,11 @@
 
     <div class="col-sm-6">
       <ui-gmap-google-map
-          center="map.center"
-          zoom="map.zoom"
-          pan="map.pan"
-          options="map.options" >
-        <ui-gmap-marker coords="newShop" idkey="1" icon="'assets/images/norev/logo-green.png'">
+        center="map.center"
+        zoom="map.zoom"
+        pan="map.pan"
+        options="map.options" >
+        <ui-gmap-marker coords="shop" idkey="1" icon="'assets/images/norev/logo-green.png'">
         </ui-gmap-marker>
       </ui-gmap-google-map>
     </div>

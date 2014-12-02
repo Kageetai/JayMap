@@ -1,16 +1,16 @@
 'use strict';
 
-describe('Controller: NewCtrl', function () {
+describe('Controller: EditshopCtrl', function () {
 
   // load the controller's module
   beforeEach(module('jayMapApp'));
 
-  var NewCtrl, scope;
+  var EditshopCtrl, scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    NewCtrl = $controller('NewCtrl', {
+    EditshopCtrl = $controller('EditshopCtrl', {
       $scope: scope
     });
   }));

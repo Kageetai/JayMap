@@ -3,10 +3,10 @@
 angular.module('jayMapApp')
   .config(function ($stateProvider) {
     $stateProvider
-      .state('new', {
+      .state('newShop', {
         url: '/shops/new',
-        templateUrl: 'app/shops/new/new.html',
-        controller: 'NewCtrl',
+        templateUrl: 'app/shops/newShop/newShop.html',
+        controller: 'NewShopCtrl',
         authenticate: true
       });
   });

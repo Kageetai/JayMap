@@ -26,11 +26,11 @@ angular.module('jayMapApp')
     };
 
 
-    $scope.$watchCollection('shop', function(newValue, oldValue) {
-      if (oldValue.$resolved !== false) {
-        $scope.shop.$update(function () {
-          console.log('shop saved');
-        });
-      }
-    });
+    //$scope.$watchCollection('shop', function(newValue, oldValue) {
+    //  if (oldValue.$resolved !== false) {
+    //    $scope.shop.$update(function () {
+    //      console.log('shop saved');
+    //    });
+    //  }
+    //});
   });

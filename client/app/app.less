@@ -27,7 +27,8 @@
 @import 'account/login/login.less';
 @import 'admin/admin.less';
 @import 'main/main.less';
-@import 'shops/new/new.less';
+@import 'shops/newShop/newShop.less';
+@import 'shops/shop/editShop/editShop.less';
 @import 'shops/shop/shop.less';
 @import 'shops/shops.less';
 @import 'variables.less';
@@ -75,4 +76,9 @@ body { padding-top: @navbar-height + @navbar-margin-bottom + @navbar-padding-top
   tr.selected {
     background-color: lightgray;
   }
+}
+
+// hack for responsive tables
+@-moz-document url-prefix() {
+  fieldset { display: table-cell; }
 }
