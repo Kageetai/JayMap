@@ -572,7 +572,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('serve', function (target) {
     if (target === 'dist') {
-      return grunt.task.run(['build', 'env:all', 'env:prod', 'shell:mongo', 'express:prod', 'wait', 'express-keepalive']);
+      return grunt.task.run(['build', 'env:all', 'env:prod', 'shell:mongo', 'express:prod', 'wait', 'open', 'express-keepalive']);
     }
 
     if (target === 'debug') {
@@ -600,7 +600,6 @@ module.exports = function (grunt) {
       'shell:mongo',
       'express:dev',
       'wait',
-      'open',
       'watch'
     ]);
   });
