@@ -19,7 +19,9 @@
         <label class="btn btn-danger" ng-model="shop.stock" btn-radio="0" ng-disabled="!isLoggedIn()" >{{ 'OUT_STOCK' | translate }}</label>
       </div>
 
-      <p ng-if="isAdmin()" class="pull-right"><a href="/shops/{{shop._id}}/edit">{{ 'EDIT_SHOP' | translate:{ shopname: shop.name } }}</a> | <a ng-click="deleteShop(shop)" href="/" class="trash">{{ 'DELETE_SHOP' | translate:{ shopname: shop.name } }}</a></p>
+      <p class="small text-right">{{ 'LAST_UPDATED' | translate }} {{ shop.updatedAt | date:'yyyy-MM-dd HH:mm:ss Z' }}</p>
+
+      <p ng-if="isAdmin()" class="text-right"><a href="/shops/{{shop._id}}/edit">{{ 'EDIT_SHOP' | translate:{ shopname: shop.name } }}</a> | <a ng-click="deleteShop(shop)" href="/" class="trash">{{ 'DELETE_SHOP' | translate:{ shopname: shop.name } }}</a></p>
     </div>
   </div>
 </div>
