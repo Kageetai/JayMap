@@ -9,6 +9,9 @@ angular.module('jayMapApp')
     $scope.shop = Shop.get({ id: $stateParams.id }, function() {
       $scope.map.center.latitude = $scope.shop.latitude;
       $scope.map.center.longitude = $scope.shop.longitude;
+      if ($scope.shop.stock >= 2) {
+        $scope.shop.stock = 2;
+      } //TODO better solution?
     }); // get() returns a single shop
 
     $scope.map = {

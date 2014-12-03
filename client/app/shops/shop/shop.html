@@ -8,15 +8,15 @@
 
       <p class="shop-address">{{shop.address}}</p>
 
-      <p class="shop-link" ng-show="shop.link">{{ 'WEBSITE' | translate }}: <a ng-href="{{shop.link}}">{{shop.link}}</a>
+      <p class="shop-link" ng-show="shop.link">{{ 'WEBSITE' | translate }}: <a ng-href="{{shop.link | checkUrl}}">{{shop.link}}</a>
       </p>
 
       <p class="shop.description" ng-show="shop.description">{{shop.description}}</p>
 
       <div class="btn-group btn-group-justified shop-stock">
-        <label class="btn btn-primary" ng-model="shop.stock" btn-radio="2" ng-disabled="!isLoggedIn()" >{{ 'IN_STOCK' | translate }}</label>
-        <label class="btn btn-warning" ng-model="shop.stock" btn-radio="1" ng-disabled="!isLoggedIn()" >{{ 'SCARCE' | translate }}</label>
-        <label class="btn btn-danger" ng-model="shop.stock" btn-radio="0" ng-disabled="!isLoggedIn()" >{{ 'OUT_STOCK' | translate }}</label>
+        <label class="btn btn-primary" ng-model="shop.stock" btn-radio="2" ng-disabled="!isLoggedIn()" ng-change="updateStock()">{{ 'IN_STOCK' | translate }}</label>
+        <label class="btn btn-warning" ng-model="shop.stock" btn-radio="1" ng-disabled="!isLoggedIn()" ng-change="updateStock()">{{ 'SCARCE' | translate }}</label>
+        <label class="btn btn-danger" ng-model="shop.stock" btn-radio="0" ng-disabled="!isLoggedIn()" ng-change="updateStock()">{{ 'OUT_STOCK' | translate }}</label>
       </div>
 
       <p class="small text-right">{{ 'LAST_UPDATED' | translate }} {{ shop.updatedAt | date:'yyyy-MM-dd HH:mm:ss Z' }}</p>

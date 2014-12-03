@@ -32,11 +32,9 @@ angular.module('jayMapApp')
       shop.$delete();
     };
 
-    //$scope.$watchCollection('shop', function(newValue, oldValue) {
-    //  if (oldValue.$resolved !== false) {
-    //    $scope.shop.$update(function () {
-    //      console.log('shop saved');
-    //    });
-    //  }
-    //});
+    $scope.updateStock = function () {
+      $scope.shop.$update(function () {
+        console.log('shop.stock updated');
+      })
+    };
   });
