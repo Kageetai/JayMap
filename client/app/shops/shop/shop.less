@@ -20,24 +20,25 @@
       font-style: italic;
     }
   }
+}
 
-  .shop-stock {
-    max-width: 555px;
-    margin: 0 auto;
+.shop-stock {
+  max-width: 555px;
+  margin: 0 auto;
+  margin-bottom: 15px;
 
-    & > .btn {
-      opacity: 0.5;
+  & > .btn {
+    opacity: 0.5;
+    .transition(all 0.5s);
+
+    &.active {
+      opacity: 1  !important;
+      width: 2%;
       .transition(all 0.5s);
+    }
 
-      &.active {
-        opacity: 1  !important;
-        width: 2%;
-        .transition(all 0.5s);
-      }
-
-      &:hover {
-        opacity: 0.7;
-      }
+    &:hover {
+      opacity: 0.7;
     }
   }
 }

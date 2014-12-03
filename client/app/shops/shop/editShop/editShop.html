@@ -58,6 +58,12 @@
           </p>
         </div>
 
+        <div class="btn-group btn-group-justified shop-stock">
+          <label class="btn btn-primary" ng-model="shop.stock" btn-radio="2" >{{ 'IN_STOCK' | translate }}</label>
+          <label class="btn btn-warning" ng-model="shop.stock" btn-radio="1" >{{ 'SCARCE' | translate }}</label>
+          <label class="btn btn-danger" ng-model="shop.stock" btn-radio="0" >{{ 'OUT_STOCK' | translate }}</label>
+        </div>
+
         <div>
           <button class="btn btn-default btn-lg" type="button" ng-click="showOnMap()">
             1. {{ 'SHOW_ON_MAP' | translate }}
