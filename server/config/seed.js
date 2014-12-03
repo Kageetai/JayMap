@@ -12,7 +12,7 @@ Shop.find({}).remove(function () {
   Shop.create({
       name: "Kunstspätkauf",
       address: "Schlesische Str. 19, 10997 Berlin",
-      stock: 100,
+      stock: 2,
       latitude: 52.49861,
       longitude: 13.446149999999989,
       image: "http://www.oushop.com/warp_sites/oushop.g6/files/Shop2.jpg",
@@ -34,7 +34,7 @@ Shop.find({}).remove(function () {
       name: "Fachschaft Charité im Hexenhaus",
       address: "Philippstraße 12 10115 Berlin",
       description: "Lorem Ipsum",
-      stock: 100,
+      stock: 1,
       latitude: 52.5250862,
       longitude: 13.38128329999995,
       image: "http://addyosmani.com/blog/wp-content/uploads/2012/06/yeoman_.jpg",

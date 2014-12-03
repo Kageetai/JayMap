@@ -12,6 +12,9 @@ angular.module('jayMapApp')
 
     $scope.shops = Shop.query(function () {
       _.each($scope.shops, function (shop) {
+        if (shop.stock >= 2) {
+          shop.stock = 2;
+        } //TODO better solution?
         shop.icon = 'assets/images/norev/logo-green.png';
         shop.onClicked = function () {
           $scope.selShop = shop;

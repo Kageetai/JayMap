@@ -8,12 +8,18 @@
 
       <p class="shop-address">{{shop.address}}</p>
 
-      <p ng-show="shop.link" class="shop-link">{{ 'WEBSITE' | translate }}: <a ng-href="{{shop.link}}">{{shop.link}}</a>
+      <p class="shop-link" ng-show="shop.link">{{ 'WEBSITE' | translate }}: <a ng-href="{{shop.link}}">{{shop.link}}</a>
       </p>
 
-      <p ng-show="shop.description">{{shop.description}}</p>
+      <p class="shop.description" ng-show="shop.description">{{shop.description}}</p>
 
-      <p><a ng-if="isAdmin()" href="/shops/{{shop._id}}/edit">{{ 'EDIT' | translate }}</a></p>
+      <div class="btn-group btn-group-justified shop-stock">
+        <label class="btn btn-primary" ng-model="shop.stock" btn-radio="2" ng-disabled="!isLoggedIn()" >{{ 'IN_STOCK' | translate }}</label>
+        <label class="btn btn-warning" ng-model="shop.stock" btn-radio="1" ng-disabled="!isLoggedIn()" >{{ 'SCARCE' | translate }}</label>
+        <label class="btn btn-danger" ng-model="shop.stock" btn-radio="0" ng-disabled="!isLoggedIn()" >{{ 'OUT_STOCK' | translate }}</label>
+      </div>
+
+      <p ng-if="isAdmin()" class="pull-right"><a href="/shops/{{shop._id}}/edit">{{ 'EDIT_SHOP' | translate:{ shopname: shop.name } }}</a> | <a ng-click="deleteShop(shop)" href="/" class="trash">{{ 'DELETE_SHOP' | translate:{ shopname: shop.name } }}</a></p>
     </div>
   </div>
 </div>

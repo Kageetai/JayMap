@@ -9,22 +9,32 @@
           <tr>
             <th>{{ 'NAME' | translate }}</th>
             <th>{{ 'ADDRESS' | translate }}</th>
-            <th>{{ 'IN_STOCK' | translate }}</th>
+            <th>{{ 'IN_STOCK' | translate }}?</th>
             <th>{{ 'WEBSITE' | translate }}</th>
+            <th ng-show="isAdmin()">&nbsp;</th>
             <th ng-show="isAdmin()">&nbsp;</th>
           </tr>
           </thead>
           <thead>
-          <tr ng-repeat="shop in shops" ng-class="{selected: shop == selShop}">
+          <tr ng-repeat="shop in shops" ng-class="{selected: shop == selShop, danger: !shop.stock, warning: shop.stock == 1}">
             <td><a ng-href="/shops/{{shop._id}}">{{shop.name}}</a></td>
             <td>{{shop.address}}</td>
-            <td>{{shop.stock ? "yes" : "no"}}</td>
+            <td><span ng-switch on="shop.stock">
+              <span ng-switch-when="0">{{ 'OUT_STOCK' | translate }}</span>
+              <span ng-switch-when="1">{{ 'SCARCE' | translate }}</span>
+              <span ng-switch-when="2">{{ 'IN_STOCK' | translate }}</span>
+            </span></td>
             <td>
               <a ng-show="shop.link" ng-href="{{shop.link}}" target="_blank" class="view">
                 <span class="fa fa-external-link"></span>
               </a>
             </td>
-            <td ng-show="isAdmin()">
+            <td ng-if="isAdmin()">
+              <a href="/shops/{{shop._id}}/edit" class="edit">
+                <span class="fa fa-pencil pull-right"></span>
+              </a>
+            </td>
+            <td ng-if="isAdmin()">
               <a ng-click="deleteShop(shop)" class="trash">
                 <span class="fa fa-trash pull-right"></span>
               </a>

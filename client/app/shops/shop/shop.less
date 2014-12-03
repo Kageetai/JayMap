@@ -21,4 +21,23 @@
     }
   }
 
+  .shop-stock {
+    max-width: 555px;
+    margin: 0 auto;
+
+    & > .btn {
+      opacity: 0.5;
+      .transition(all 0.5s);
+
+      &.active {
+        opacity: 1  !important;
+        width: 2%;
+        .transition(all 0.5s);
+      }
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
 }
