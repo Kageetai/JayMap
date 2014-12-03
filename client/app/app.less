@@ -36,7 +36,13 @@
 @import '/client/directives/clickToEdit/clickToEdit.less';
 // endinjector
 
-body { padding-top: @navbar-height + @navbar-margin-bottom + @navbar-padding-top; }
+body {
+  padding-top: @navbar-height + @navbar-margin-bottom;
+
+  @media (min-width: @screen-sm-min) {
+    padding-top: @navbar-height + @navbar-margin-bottom + @navbar-padding-top;
+  }
+}
 
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 

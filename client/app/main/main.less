@@ -1,6 +1,10 @@
 .main-map .angular-google-map-container {
   height: 100vh;
-  margin-top: -(@navbar-height + @navbar-margin-bottom + 35px);
+  margin-top: -(@navbar-height + @navbar-margin-bottom);
+
+  @media (min-width: @screen-sm-min) {
+    margin-top: -(@navbar-height + @navbar-margin-bottom + @navbar-padding-top);
+  }
 
   .cluster > div {
     color: white !important;
