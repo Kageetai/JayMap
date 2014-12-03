@@ -35,6 +35,6 @@ angular.module('jayMapApp')
     $scope.updateStock = function () {
       $scope.shop.$update(function () {
         console.log('shop.stock updated');
-      })
+      });
     };
   });

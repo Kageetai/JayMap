@@ -6,8 +6,6 @@ angular.module('jayMapApp')
       if (!input) {
         return;
       }
-      if (!input.startsWith("http://"))
-        return "http://" + input;
-      return input;
+      return !input.startsWith('http://') ? 'http://' + input : input;
     };
   });
