@@ -25,7 +25,7 @@
               <span ng-switch-when="2">{{ 'IN_STOCK' | translate }}</span>
             </span></td>
             <td>
-              <a ng-show="shop.link" ng-href="{{shop.link}}" target="_blank" class="view">
+              <a ng-show="shop.link" ng-href="{{shop.link | checkUrl}}" target="_blank" class="view">
                 <span class="fa fa-external-link"></span>
               </a>
             </td>
