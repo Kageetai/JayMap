@@ -13,7 +13,8 @@ var ShopSchema = new Schema({
   image: String,
   link: String,
   createdAt: { type: Date, default: Date.now },
-  updatedAt: { type: Date, default: Date.now }
+  updatedAt: { type: Date, default: Date.now },
+  updatedBy: { type: Schema.ObjectId, reference: 'User' }
 });
 
 module.exports = mongoose.model('Shop', ShopSchema);
