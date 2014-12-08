@@ -24,6 +24,7 @@
   "ADDRESS_REQUIRED": "An address is required",
   "UNKNOWN_ADDRESS": "This doesn't seem to be valid address.",
   "LAST_UPDATED": "Last updated",
+  "TAGS": "Tags",
   "IN_STOCK": "In Stock",
   "SCARCE": "Scarce",
   "OUT_STOCK": "Out of stock",

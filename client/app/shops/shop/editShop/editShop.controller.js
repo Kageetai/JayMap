@@ -1,10 +1,12 @@
 'use strict';
 
 angular.module('jayMapApp')
-  .controller('EditshopCtrl', function ($scope, $stateParams, Shop, Geocoder) {
+  .controller('EditshopCtrl', function ($scope, $stateParams, Shop, Tag, Geocoder) {
     //$scope.isLoggedIn = Auth.isLoggedIn;
     //$scope.isAdmin = Auth.isAdmin;
     //$scope.getCurrentUser = Auth.getCurrentUser;
+
+    $scope.tags = Tag.query();
 
     $scope.shop = Shop.get({ id: $stateParams.id }, function() {
       $scope.map.center.latitude = $scope.shop.latitude;
@@ -12,6 +14,11 @@ angular.module('jayMapApp')
       if ($scope.shop.stock >= 2) {
         $scope.shop.stock = 2;
       } //TODO better solution?
+      _($scope.tags).forEach(function (tag) {
+        if (_.contains($scope.shop.tags, tag._id)) {
+          tag.active = true;
+        }
+      });
     }); // get() returns a single shop
 
     $scope.map = {
@@ -47,6 +54,10 @@ angular.module('jayMapApp')
             $scope.submittedError = true;
           }
         });
+    };
+
+    $scope.assignTags = function () {
+      $scope.shop.tags = _($scope.tags).filter('active').pluck('_id').value();
     };
 
     $scope.saveShop = function (form) {

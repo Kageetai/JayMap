@@ -5,7 +5,7 @@
     </div>
   </div>
 
-  <div class="row" ng-show="submittedSuccess || submittedNoLocation || submittedError">
+  <div class="row alert-container" ng-show="submittedSuccess || submittedNoLocation || submittedError">
     <div class="col-sm-12">
       <div class="alert alert-success" role="alert" ng-show="submittedSuccess"><strong>{{ 'SUCCESS' | translate }}</strong> {{ 'SHOP_UPDATED' | translate }} {{ 'THANK_YOU' | translate }}</div>
       <div class="alert alert-danger" role="alert" ng-show="submittedNoLocation"><strong>{{ 'ERROR' | translate }}</strong> {{ 'ADDRESS_NOT_FOUND' | translate }}</div>
@@ -58,7 +58,20 @@
           </p>
         </div>
 
-        <div class="btn-group btn-group-justified shop-stock">
+        <pre>{{shop.tags}}</pre>
+        <pre>{{tags}}</pre>
+        <div class="form-group">
+          <label>{{ 'TAGS' | translate }}</label>
+          <div class="btn-group" ng-click="assignTags()">
+            <label ng-repeat="tag in tags"
+                   class="btn btn-default"
+                   ng-class="{ 'btn-primary': tag.active }"
+                   ng-model="tag.active"
+                   btn-checkbox>{{ tag.name }}</label>
+          </div>
+        </div>
+
+        <div class="form-group btn-group btn-group-justified shop-stock">
           <label class="btn btn-primary" ng-model="shop.stock" btn-radio="2" >{{ 'IN_STOCK' | translate }}</label>
           <label class="btn btn-warning" ng-model="shop.stock" btn-radio="1" >{{ 'SCARCE' | translate }}</label>
           <label class="btn btn-danger" ng-model="shop.stock" btn-radio="0" >{{ 'OUT_STOCK' | translate }}</label>

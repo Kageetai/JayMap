@@ -13,7 +13,7 @@
 
       <p class="shop.description" ng-show="shop.description">{{shop.description}}</p>
 
-      <div class="btn-group btn-group-justified shop-stock">
+      <div class="form-group btn-group btn-group-justified shop-stock">
         <label class="btn btn-primary" ng-model="shop.stock" btn-radio="2" ng-disabled="!isLoggedIn()" ng-change="updateStock()">{{ 'IN_STOCK' | translate }}</label>
         <label class="btn btn-warning" ng-model="shop.stock" btn-radio="1" ng-disabled="!isLoggedIn()" ng-change="updateStock()">{{ 'SCARCE' | translate }}</label>
         <label class="btn btn-danger" ng-model="shop.stock" btn-radio="0" ng-disabled="!isLoggedIn()" ng-change="updateStock()">{{ 'OUT_STOCK' | translate }}</label>
