@@ -7,6 +7,7 @@
 
 var User = require('../api/user/user.model');
 var Shop = require('../api/shop/shop.model');
+var Tag = require('../api/tag/tag.model');
 
 Shop.find({}).remove(function () {
   Shop.create({
@@ -70,4 +71,16 @@ User.find({}).remove(function () {
       console.log('finished populating users');
     }
   );
+});
+
+Tag.find({}).remove(function () {
+  Tag.create({
+    name: "Bar",
+    info: "Eine Bar mit J-Tränk",
+    image: "http://j-traenk.de/wp-content/uploads/2014/11/jtr%C3%A4nk-karte-Bar-.gif"
+  }, {
+    name: "Club",
+    info: "Ein club mit J-Tränk",
+    image: "http://j-traenk.de/wp-content/uploads/2014/11/jtr%C3%A4nk-karte-club.gif"
+  });
 });

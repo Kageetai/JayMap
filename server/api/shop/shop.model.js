@@ -4,14 +4,15 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var ShopSchema = new Schema({
-  name: String,
-  address: String,
+  name: { type: String, required: true },
+  address: { type: String, required: true },
   description: String,
   stock: { type: Number, default: 100 },
-  latitude: Number,
-  longitude: Number,
+  latitude: { type: Number, required: true },
+  longitude: { type: Number, required: true },
   image: String,
   link: String,
+  tags: [{ type: Schema.ObjectId, ref: 'Tag' }],
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now }
 });
