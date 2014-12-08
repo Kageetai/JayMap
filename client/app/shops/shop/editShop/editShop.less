@@ -1,0 +1,19 @@
+.page-header {
+  & > .back-arrow {
+    padding-right: 0.3em;
+
+    @media (min-width: @screen-sm-min) {
+      display: none;
+      position: absolute;
+      left: -0.7em;
+
+      &:hover {
+        display: inherit;
+      }
+    }
+  }
+
+  &:hover > .back-arrow {
+    display: inherit;
+  }
+}
