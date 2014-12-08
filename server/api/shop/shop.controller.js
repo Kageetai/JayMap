@@ -13,7 +13,9 @@ exports.index = function(req, res) {
 
 // Get a single shop
 exports.show = function(req, res) {
-  Shop.findById(req.params.id, function (err, shop) {
+  Shop.findById(req.params.id)
+    .populate('updatedBy', 'name')
+    .exec(function (err, shop) {
     if(err) { return handleError(res, err); }
     if(!shop) { return res.send(404); }
     return res.json(shop);
@@ -36,7 +38,7 @@ exports.update = function(req, res) {
     if(!shop) { return res.send(404); }
     var updated = _.merge(shop, req.body);
     shop.updatedAt = new Date();
-    shop.updatedBy = req.user._id;
+    shop.updatedBy = req.user;
     updated.save(function (err) {
       if (err) { return handleError(res, err); }
       return res.json(200, shop);
