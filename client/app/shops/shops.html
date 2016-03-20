@@ -21,7 +21,7 @@
             <td>{{shop.address}}</td>
             <td><span ng-switch on="shop.stock">
               <span ng-switch-when="0">{{ 'OUT_STOCK' | translate }}</span>
-              <span ng-switch-when="1">{{ 'SCARCE' | translate }}</span>
+              <span ng-switch-when="1">{{ 'UNCLEAR' | translate }}</span>
               <span ng-switch-when="2">{{ 'IN_STOCK' | translate }}</span>
             </span></td>
             <td>

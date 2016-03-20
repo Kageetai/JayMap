@@ -546,7 +546,7 @@ module.exports = function (grunt) {
     },
     shell: {
       mongo: {
-        command: 'mongod --dbpath d:/\mongodbdata',
+        command: 'mongod',
         options: {
           async: true
         }
@@ -572,7 +572,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('serve', function (target) {
     if (target === 'dist') {
-      return grunt.task.run(['build', 'env:all', 'env:prod', 'shell:mongo', 'express:prod', 'wait', 'open', 'express-keepalive']);
+      return grunt.task.run(['build', 'env:all', 'env:prod', 'express:prod', 'wait', 'open', 'express-keepalive']);
     }
 
     if (target === 'debug') {
@@ -583,7 +583,7 @@ module.exports = function (grunt) {
         'concurrent:server',
         'injector',
         'wiredep',
-        'shell:mongo',
+        //'shell:mongo',
         'autoprefixer',
         'concurrent:debug'
       ]);
@@ -597,7 +597,7 @@ module.exports = function (grunt) {
       'injector',
       'wiredep',
       'autoprefixer',
-      'shell:mongo',
+      //'shell:mongo',
       'express:dev',
       'wait',
       'watch'
@@ -640,7 +640,7 @@ module.exports = function (grunt) {
         'injector',
         'wiredep',
         'autoprefixer',
-        'shell:mongo',
+        //'shell:mongo',
         'express:dev',
         'protractor'
       ]);
