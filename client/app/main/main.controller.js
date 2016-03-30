@@ -29,7 +29,13 @@ angular.module('jayMapApp')
 
     $scope.shops = Shop.query(function () {
       _.each($scope.shops, function (shop) {
-        shop.icon = 'assets/images/norev/logo-green.png';
+        if (shop.stock == 0) {
+          shop.icon = 'assets/images/norev/logo-red.png';
+        } else if (shop.stock == 1) {
+          shop.icon = 'assets/images/norev/logo-yellow.png';
+        } else {
+          shop.icon = 'assets/images/norev/logo-green.png';
+        }
         shop.onClicked = function () {
           $scope.selShop = shop;
         };
