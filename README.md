@@ -15,7 +15,7 @@ Heroku: http://jaymap.herokuapp.com
 ## Requirements
 
 - [Node.js](http://nodejs.org/)
-- [MongoDB](https://www.mongodb.com/) installed and running ('mongod)'
+- [MongoDB](https://www.mongodb.com/) installed and running (`mongod`)
 - Grunt-CLI `npm install -g grunt-cli`
 
 ## Usage
